@@ -1,0 +1,584 @@
+\documentclass[a4paper,UKenglish,cleveref, autoref, thm-restate]{lipics-v2021}
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{vietnam} 
+\usepackage{listings}
+% -- support vietnamese --
+% \usepackage[vietnamese]{babel}
+% -- support english --
+% \usepackage[english]{babel}
+
+%This is a template for producing LIPIcs articles. 
+%See lipics-v2021-authors-guidelines.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+%for section-numbered lemmas etc., use "numberwithinsect"
+%for enabling cleveref support, use "cleveref"
+%for enabling autoref support, use "autoref"
+%for anonymousing the authors (e.g. for double-blind review), add "anonymous"
+%for enabling thm-restate support, use "thm-restate"
+%for enabling a two-column layout for the author/affilation part (only applicable for > 6 authors), use "authorcolumns"
+%for producing a PDF according the PDF/A standard, add "pdfa"
+
+%\pdfoutput=1 %uncomment to ensure pdflatex processing (mandatatory e.g. to submit to arXiv)
+%\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
+
+%\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
+
+\bibliographystyle{plainurl}% the mandatory bibstyle
+
+\title{Giới thiệu về {\LaTeX}\ và gói lệnh Beamer} %TODO Please add
+
+%\titlerunning{Dummy short title} %TODO optional, please use if title is longer than one line
+
+\author{Lê Nhựt Nam}{MSSV: 23C24004, Toán ứng dụng, Khóa 33 \and Bộ môn Khoa học Máy tính, Khoa Công nghệ Thông tin, Trường Đại học Khoa học Tự nhiên \and Đại học Quốc gia Thành phố Hồ Chí Minh, Việt Nam \and \url{http://lnhutnam.github.io} }{nam.lnhut@gmail.com}{https://orcid.org/0000-0002-2273-5089}{Được tài trợ bởi Tổ chức ABCXYZ}%TODO mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional. Use additional curly braces to indicate the correct name splitting when the last name consists of multiple name parts.
+
+% \author{Joan R. Public\footnote{Optional footnote, e.g. to mark corresponding author}}{Department of Informatics, Dummy College, [optional: Address], Country}{joanrpublic@dummycollege.org}{[orcid]}{[funding]}
+
+\authorrunning{Le Nhut Nam} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
+
+\Copyright{Le Nhut Nam} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+\ccsdesc[500]{Mathematics of computing~Convex optimization} %TODO mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm 
+
+\keywords{\LaTeX, Beamer} %TODO mandatory; please add comma-separated list of keywords
+
+\category{Báo cáo} %optional, e.g. invited paper
+
+\relatedversion{} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
+%\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93]{Classification (e.g. Full Version, Extended Version, Previous Version}{URL to related version} %linktext and cite are optional
+
+%\supplement{}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
+%\supplementdetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93, subcategory={Description, Subcategory}, swhid={Software Heritage Identifier}]{General Classification (e.g. Software, Dataset, Model, ...)}{URL to related version} %linktext, cite, and subcategory are optional
+
+%\funding{(Optional) general funding statement \dots}%optional, to capture a funding statement, which applies to all authors. Please enter author specific funding statements as fifth argument of the \author macro.
+
+\acknowledgements{Tôi muốn cảm ơn các thầy đã hỗ trợ tôi trong việc nghiên cứu và học tập về \LaTeX}%optional
+
+%\nolinenumbers %uncomment to disable line numbering
+
+
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EventEditors{Phương pháp nghiên cứu khoa học}
+\EventNoEds{2}
+\EventLongTitle{Bài tập 01 - Phương pháp nghiên cứu khoa học (CHT2024)}
+\EventShortTitle{CHT 2024}
+\EventAcronym{CHT}
+\EventYear{2024}
+\EventDate{April 24--27, 2024}
+\EventLocation{Ho Chi Minh City, Vietnam}
+\EventLogo{}
+\SeriesVolume{42}
+\ArticleNo{01}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+%TODO mandatory: add short abstract of the document
+\begin{abstract}
+Tiểu luận này trình bày về \LaTeX\ và gói Beamer, tập trung vào việc sử dụng chúng để soạn thảo bài trình chiếu. Đầu tiên, chúng tôi giới thiệu về \LaTeX\, một hệ thống soạn thảo văn bản mạnh mẽ và phổ biến trong cộng đồng khoa học và kỹ thuật. \LaTeX\ cho phép người dùng tạo ra các tài liệu chất lượng cao, bao gồm bài báo, sách và bài trình chiếu, bằng cách sử dụng cú pháp đơn giản và mã nguồn mở.
+
+Tiếp theo, tiểu luận giới thiệu về gói Beamer, một gói LaTeX được thiết kế đặc biệt để tạo ra bài trình chiếu chuyên nghiệp. Beamer cung cấp một loạt các chủ đề và mẫu mặc định để giúp người dùng tạo ra các bài trình chiếu đẹp mắt và dễ đọc. Nó cung cấp các tính năng như chuyển đổi màn hình tự động, hiệu ứng trượt mượt mà và hỗ trợ cho việc thêm nội dung đa phương tiện như hình ảnh, video và biểu đồ.
+
+Bằng cách sử dụng \LaTeX\ và gói Beamer, người dùng có thể tạo ra các bài trình chiếu chuyên nghiệp với nhiều tính năng và thiết kế linh hoạt, giúp họ trình bày ý tưởng và thông tin một cách hiệu quả và ấn tượng.
+\end{abstract}
+
+\section{Tìm hiểu về {\LaTeX}}
+\label{sec:latex-summary}
+
+{\LaTeX} là một hệ thống soạn thảo văn bản và chuẩn bị tài liệu mạnh mẽ, thường được sử dụng trong các cộng đồng khoa học, kỹ thuật, toán học, và nghiên cứu khoa học máy tính. Được phát triển bởi Leslie Lamport vào đầu những năm 1980, {\LaTeX} dựa trên hệ thống TeX của Donald Knuth, cung cấp một ngôn ngữ đánh dấu cao cấp để soạn thảo các văn bản phức tạp với chất lượng in ấn đẹp mắt.
+
+Một trong những đặc điểm nổi bật của {\LaTeX} là khả năng xử lý chính xác các công thức toán học, bảng biểu, hình ảnh, và chú thích chéo. Nó cho phép người dùng tập trung vào nội dung của tài liệu mà không phải lo lắng về định dạng chi tiết.{\LaTeX{}} tự động xử lý các mục như đánh số trang, tạo mục lục, và quản lý danh sách tài liệu tham khảo theo chuẩn mực học thuật.
+
+Sử dụng  {\LaTeX} cũng đồng nghĩa với việc người dùng có thể tạo ra các tài liệu có tính nhất quán cao về định dạng, đồng thời đảm bảo tính chuyên nghiệp và thẩm mỹ. Đây là lý do tại sao nó được ưa chuộng trong việc viết các luận văn thạc sĩ, tiến sĩ, và các bài báo khoa học.
+
+Hơn nữa, cộng đồng người dùng  {\LaTeX}rất đông đảo và nhiệt tình, sẵn sàng hỗ trợ qua các diễn đàn trực tuyến, hướng dẫn, và gói mở rộng, làm cho  {\LaTeX} không chỉ là một công cụ mạnh mẽ mà còn rất linh hoạt và phù hợp với nhiều nhu cầu soạn thảo khác nhau. 
+
+% Please comply with the following instructions when preparing your article for a LIPIcs proceedings volume. 
+% \paragraph*{Minimum requirements}
+
+% \begin{itemize}
+% \item Use pdflatex and an up-to-date \LaTeX{} system.
+% \item Use further \LaTeX{} packages and custom made macros carefully and only if required.
+% \item Use the provided sectioning macros: \verb+\section+, \verb+\subsection+, \verb+\subsubsection+, \linebreak \verb+\paragraph+, \verb+\paragraph*+, and \verb+\subparagraph*+.
+% \item Provide suitable graphics of at least 300dpi (preferably in PDF format).
+% \item Use BibTeX and keep the standard style (\verb+plainurl+) for the bibliography.
+% \item Please try to keep the warnings log as small as possible. Avoid overfull \verb+\hboxes+ and any kind of warnings/errors with the referenced BibTeX entries.
+% \item Use a spellchecker to correct typos.
+% \end{itemize}
+
+% \paragraph*{Mandatory metadata macros}
+% Please set the values of the metadata macros carefully since the information parsed from these macros will be passed to publication servers, catalogues and search engines.
+% Avoid placing macros inside the metadata macros. The following metadata macros/environments are mandatory:
+% \begin{itemize}
+% \item \verb+\title+ and, in case of long titles, \verb+\titlerunning+.
+% \item \verb+\author+, one for each author, even if two or more authors have the same affiliation.
+% \item \verb+\authorrunning+ and \verb+\Copyright+ (concatenated author names)\\
+% The \verb+\author+ macros and the \verb+\Copyright+ macro should contain full author names (especially with regard to the first name), while \verb+\authorrunning+ should contain abbreviated first names.
+% \item \verb+\ccsdesc+ (ACM classification, see \url{https://www.acm.org/publications/class-2012}).
+% \item \verb+\keywords+ (a comma-separated list of keywords).
+% \item \verb+\relatedversion+ (if there is a related version, typically the ``full version''); please make sure to provide a persistent URL, e.\,g., at arXiv.
+% \item \verb+\begin{abstract}...\end{abstract}+ .
+% \end{itemize}
+
+% \paragraph*{Please do not \ldots} %Do not override the \texttt{\seriesstyle}-defaults}
+% Generally speaking, please do not override the \texttt{lipics-v2021}-style defaults. To be more specific, a short checklist also used by Dagstuhl Publishing during the final typesetting is given below.
+% In case of \textbf{non-compliance} with these rules Dagstuhl Publishing will remove the corresponding parts of \LaTeX{} code and \textbf{replace it with the \texttt{lipics-v2021} defaults}. In serious cases, we may reject the LaTeX-source and expect the corresponding author to revise the relevant parts.
+% \begin{itemize}
+% \item Do not use a different main font. (For example, the \texttt{times} package is forbidden.)
+% \item Do not alter the spacing of the \texttt{lipics-v2021.cls} style file.
+% \item Do not use \verb+enumitem+ and \verb+paralist+. (The \texttt{enumerate} package is preloaded, so you can use
+%  \verb+\begin{enumerate}[(a)]+ or the like.)
+% \item Do not use ``self-made'' sectioning commands (e.\,g., \verb+\noindent{\bf My+ \verb+Paragraph}+).
+% \item Do not hide large text blocks using comments or \verb+\iffalse+ $\ldots$ \verb+\fi+ constructions. 
+% \item Do not use conditional structures to include/exclude content. Instead, please provide only the content that should be published -- in one file -- and nothing else.
+% \item Do not wrap figures and tables with text. In particular, the package \texttt{wrapfig} is not supported.
+% \item Do not change the bibliography style. In particular, do not use author-year citations. (The
+% \texttt{natbib} package is not supported.)
+% \end{itemize}
+
+% \enlargethispage{\baselineskip}
+
+% This is only a summary containing the most relevant details. Please read the complete document ``LIPIcs: Instructions for Authors and the \texttt{lipics-v2021} Class'' for all details and don't hesitate to contact Dagstuhl Publishing (\url{mailto:publishing@dagstuhl.de}) in case of questions or comments:
+% \href{http://drops.dagstuhl.de/styles/lipics-v2021/lipics-v2021-authors/lipics-v2021-authors-guidelines.pdf}{\texttt{http://drops.dagstuhl.de/styles/lipics-v2021/\newline lipics-v2021-authors/lipics-v2021-authors-guidelines.pdf}}
+
+\section{Giới thiệu về gói lệnh Beamer}
+\label{sec:beamer-summary}
+
+\subsection{Tổng quan về Beamer} 
+
+Giống như với một lớp tài liệu article, chúng ta sẽ cần phải khai báo một số điều kiện ban đầu để \LaTeX\ biết bạn đang cố gắng biên dịch loại tài liệu nào. Sự khác biệt quan trọng nhất giữa một bản trình chiếu và một bài báo là khai báo "documentclass" của chúng ta hiện tại là "beamer": \verb|\documentclass{beamer}|. Dưới đây là một phần mở rộng mà bạn có thể sao chép và dán vào một trình soạn thảo văn bản \LaTeX\ trống. Ta sẽ nhận thấy rằng nó có nhiều phần được comment ra. Ngoài ra, ta có thể thay đổi chủ đề màu sắc và chủ đề của bản trình diễn của mình bằng cách thay đổi dòng nào không được comment ra.
+
+\begin{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------
+% PACKAGES AND THEMES
+%--------------------------------------------------------------
+
+\documentclass{beamer}
+\mode<presentation> {
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see 
+% what they look like.
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+%\setbeamertemplate{footline} %To remove the 
+% footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the 
+% footer line in all slides with a simple slide 
+% count uncomment this line
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation 
+% symbols from the bottom of all slides uncomment this line
+}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule 
+% and \bottomrule in tables
+
+\end{lstlisting}
+
+Ngoài các cách phối màu đóng hộp, Beamer còn đủ linh hoạt để chúng ta có thể tự tạo cho riêng mình. Ví dụ, ta có thể thay đổi cách phối màu để phù hợp với màu của vị trí sắp trình bày như sau:
+\begin{lstlisting}
+\documentclass{beamer}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\mode<presentation> {
+\usefonttheme{professionalfonts}
+\setbeamertemplate{itemize item}{\color{black}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+\usetheme{Copenhagen}
+\definecolor{big_orange}{rgb}{1.0, .35, 0.0}
+\usecolortheme[named=big_orange]{structure}
+\setbeamertemplate{navigation symbols}{} }
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\end{lstlisting}
+
+\subsection{Trang tiêu đề}
+
+Giống như bất kỳ bản trình chiếu nào, chúng ta sẽ muốn bao gồm một trang tiêu đề hiển thị tiêu đề của bản trình bày, tên của người trình bày, tổ chức liên kết, địa chỉ liên hệ, ngày tháng, v.v. Các lệnh để thực hiện việc này tương đối đơn giản và xuất hiện bên dưới. Tùy thuộc vào chủ đề người trình bày chọn cho bản trình bày Beamer của mình, một số tùy chọn cho bản trình bày có thể có hoặc không có sẵn cho người dùng.
+
+\begin{lstlisting}
+\title[Short Title Here]{Full Title Here} % The short title appears 
+% at the
+% bottom of every slide, the full title is only on the title page
+\author{Author Name Here} % Your name
+\institute[Your Institution] % Your institution as it will appear 
+% on the
+% bottom of every slide, may be shorthand to save space
+{Your University \\ % Your institution for the title page
+\medskip
+\textit{email} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+\end{lstlisting}
+
+Sau đó, chúng ta chỉ cần gọi vào phần thân trình chiếu
+\begin{lstlisting}
+\begin{document}
+\begin{verbatim}
+\titlepage % Print the title page as the first slide
+\end{frame}
+\end{lstlisting}
+
+\subsection{Phần thân của bài trình chiếu}
+
+Tiếp theo là phần nội dung của slideshow. Phần này sẽ hoạt động giống như nội dung của bất kỳ tài liệu \LaTeX\ nào khác. Ta được phép bao gồm các tiêu đề phần và tiểu mục. Làm như vậy sẽ khiến các tiêu đề này xuất hiện trên các trang chiếu và trong trường hợp người trình bày chọn đưa mục lục vào, các tiêu đề phần này sẽ là những gì Beamer hiển thị.
+
+Khi gõ các slide bằng \LaTeX\, mỗi slide duy nhất sẽ được kết thúc bằng câu sau:
+\begin{lstlisting}
+\begin{frame}
+\frametitle{Title Goes Here}
+\end{frame}
+\end{lstlisting}
+
+Chỉ riêng đoạn mã đó sẽ tạo ra một slide trống mới chỉ có tiêu đề được điền vào. Nếu người dùng muốn đưa vào mục lục, việc này có thể dễ dàng thực hiện như sau:
+
+\begin{lstlisting}
+\begin{frame}
+\frametitle{Preview}
+\tableofcontents
+\end{frame}
+\end{lstlisting}
+
+Hầu hết mọi người điền vào trang trình bày của mình bằng cách sử dụng các dấu đầu dòng—thường là theo cột. Những người khác có thể muốn một số gạch đầu dòng kèm theo hình ảnh hoặc bảng biểu. Những người khác vẫn có thể muốn viết một số công thức toán học. Tất cả các lệnh mà người dùng đã học để viết bản thảo \LaTeX\ cũng sẽ hoạt động trong môi trường Beamer. Ví dụ: nếu người dùng muốn một trang trình bày chỉ bao gồm các dấu đầu dòng, thì có thể xây dựng như sau:
+
+\begin{lstlisting}
+\begin{frame}
+\frametitle{Slide Title Here}
+\begin{itemize}
+\item{Point a}
+\item{Point b}
+\item{Point c}
+\end{itemize}
+\end{lstlisting}
+
+Nếu muốn thêm cột, người dùng chỉ cần thêm một vài dòng mã. Mã bên dưới hiển thị một trang trình bày có hai cột—cột bên phải dày hơn một chút—với một danh sách liệt kê ở cột bên trái và một hình ảnh ở cột bên phải.
+
+\begin{lstlisting}
+\begin{frame}
+\frametitle{A Slide with Multiple Columns}
+\begin{columns}[c] % The "c" option specifies centered 
+% vertical alignment while
+% the "t" option is used for top vertical alignment
+\column{.45\textwidth} % Left column and width
+\begin{enumerate}
+\item{Thing 1}
+\item{Thing 2}
+\item{Thing 3}
+\end{enumerate}
+\column{.5\textwidth} % Right column and width
+\centering
+\includegraphics[width=2.5in]{filename}
+\end{columns}
+\end{frame}
+\end{lstlisting}
+
+Trong trường hợp người dùng muốn nhập một trang trình bày sử dụng môi trường “verbatim”, người dùng sẽ cần thêm tùy chọn “fragile” vào trang trình bày của mình.
+
+\begin{lstlisting}
+\begin{frame}[fragile]
+\frametitle{Slide Title}
+Some verbatim information goes here.
+\end{frame}
+\end{lstlisting}
+
+Trong trường hợp ta muốn đưa vào thư mục, ta sẽ phải nhập thủ công các trích dẫn và tài liệu tham khảo vì Beamer không hỗ trợ BibTex. Có lẽ quan trọng hơn, việc làm lộn xộn một bản trình chiếu với các tài liệu tham khảo là một hình thức tồi. Phần lớn bài thuyết trình của bạn phải rõ ràng.
+
+Nếu ta đang thuyết trình một bài nói chuyện dài hơn và mong đợi một lượt hỏi đáp, ta có thể xây dựng một Phụ lục gồm “những câu hỏi mà tôi dự đoán và muốn có câu trả lời sẵn”. Đó là cách thực hành rất tốt và được khuyến khích. Tuy nhiên, việc thêm nhiều trang trình bày bổ sung vào phần sau của bản trình bày có thể làm tăng số lượng trang trình bày ở cuối bản trình chiếu, khiến người xem có ấn tượng sai về phạm vi bản trình bày. Để hack bộ đếm slide, hãy thêm dòng mã sau ngay trước lệnh \verb|\begin{document}|:
+
+\begin{lstlisting}
+\newcounter{mylastframe}
+\end{lstlisting}
+
+Sau đó, chỉ cần đưa dòng mã tiếp theo vào trang trình bày cuối cùng của bài nói chuyện (tức là trước khi bạn gõ \verb|\end{frame}|) trước phần Phụ lục:
+
+\begin{lstlisting}
+\setcounter{mylastframe}{\value{framenumber}}
+\end{lstlisting}
+
+\subsection{Phần kết thúc của bài trình chiều}
+
+Một số người thích thêm slide “Cảm ơn”. Đó không phải là một ý tưởng tồi. Nếu người dùng đang tìm việc làm thì đây có thể là nơi trình chiếu của mình sẽ xuất hiện trong vài phút tiếp theo trong phần Hỏi \& Đáp, nghĩa là người ta có thể sử dụng cơ hội trực quan này để nhắc nhở khán giả rằng bạn là ai, chức danh của bạn là gì, và quan trọng là thông tin liên hệ của bạn là gì nếu họ muốn liên lạc lại với bạn và đặt thêm câu hỏi hoặc đưa ra phản hồi. Điều này có thể trông giống như:
+
+\begin{lstlisting}
+\begin{frame}
+\centering
+\vspace{.5cm}
+Thanks
+\vspace{1.25cm}
+\url{your email}
+\end{frame}
+\end{lstlisting}
+
+Khi chúng ta đã nói tất cả những gì cần nói, hãy sử dụng cùng một dòng mã như cách bạn làm với một bài viết để kết thúc tệp tập lệnh của mình:
+
+\begin{lstlisting}
+\end{document}
+\end{lstlisting}
+
+% \begin{lemma}[Lorem ipsum]
+% \label{lemma:lorem}
+% Vestibulum sodales dolor et dui cursus iaculis. Nullam ullamcorper purus vel turpis lobortis eu tempus lorem semper. Proin facilisis gravida rutrum. Etiam sed sollicitudin lorem. Proin pellentesque risus at elit hendrerit pharetra. Integer at turpis varius libero rhoncus fermentum vitae vitae metus.
+% \end{lemma}
+
+% \begin{proof}
+% Cras purus lorem, pulvinar et fermentum sagittis, suscipit quis magna.
+
+
+% \proofsubparagraph*{Just some paragraph within the proof.}
+% Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+% \begin{claim}
+% content...
+% \end{claim}
+% \begin{claimproof}
+% content...
+%     \begin{enumerate}
+%         \item abc abc abc \claimqedhere{}
+%     \end{enumerate}
+% \end{claimproof}
+
+% \end{proof}
+
+% \begin{corollary}[Curabitur pulvinar, \cite{DBLP:books/mk/GrayR93}]
+% \label{lemma:curabitur}
+% Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+% \end{corollary}
+
+% \begin{proposition}\label{prop1}
+% This is a proposition
+% \end{proposition}
+
+% \autoref{prop1} and \cref{prop1} \ldots
+
+% \subsection{Curabitur dictum felis id sapien}
+
+% Curabitur dictum \cref{lemma:curabitur} felis id sapien \autoref{lemma:curabitur} mollis ut venenatis tortor feugiat. Curabitur sed velit diam. Integer aliquam, nunc ac egestas lacinia, nibh est vehicula nibh, ac auctor velit tellus non arcu. Vestibulum lacinia ipsum vitae nisi ultrices eget gravida turpis laoreet. Duis rutrum dapibus ornare. Nulla vehicula vulputate iaculis. Proin a consequat neque. Donec ut rutrum urna. Morbi scelerisque turpis sed elit sagittis eu scelerisque quam condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean nec faucibus leo. Cras ut nisl odio, non tincidunt lorem. Integer purus ligula, venenatis et convallis lacinia, scelerisque at erat. Fusce risus libero, convallis at fermentum in, dignissim sed sem. Ut dapibus orci vitae nisl viverra nec adipiscing tortor condimentum \cite{DBLP:journals/cacm/Dijkstra68a}. Donec non suscipit lorem. Nam sit amet enim vitae nisl accumsan pretium. 
+
+% \begin{lstlisting}[caption={Useless code.},label=list:8-6,captionpos=t,float,abovecaptionskip=-\medskipamount]
+% for i:=maxint to 0 do 
+% begin 
+%     j:=square(root(i));
+% end;
+% \end{lstlisting}
+
+% \subsection{Proin ac fermentum augue}
+
+% Proin ac fermentum augue. Nullam bibendum enim sollicitudin tellus egestas lacinia euismod orci mollis. Nulla facilisi. Vivamus volutpat venenatis sapien, vitae feugiat arcu fringilla ac. Mauris sapien tortor, sagittis eget auctor at, vulputate pharetra magna. Sed congue, dui nec vulputate convallis, sem nunc adipiscing dui, vel venenatis mauris sem in dui. Praesent a pretium quam. Mauris non mauris sit amet eros rutrum aliquam id ut sapien. Nulla aliquet fringilla sagittis. Pellentesque eu metus posuere nunc tincidunt dignissim in tempor dolor. Nulla cursus aliquet enim. Cras sapien risus, accumsan eu cursus ut, commodo vel velit. Praesent aliquet consectetur ligula, vitae iaculis ligula interdum vel. Integer faucibus faucibus felis. 
+
+% \begin{itemize}
+% \item Ut vitae diam augue. 
+% \item Integer lacus ante, pellentesque sed sollicitudin et, pulvinar adipiscing sem. 
+% \item Maecenas facilisis, leo quis tincidunt egestas, magna ipsum condimentum orci, vitae facilisis nibh turpis et elit. 
+% \end{itemize}
+
+% \begin{remark}
+% content...
+% \end{remark}
+
+% \section{Pellentesque quis tortor}
+
+% Nec urna malesuada sollicitudin. Nulla facilisi. Vivamus aliquam tempus ligula eget ornare. Praesent eget magna ut turpis mattis cursus. Aliquam vel condimentum orci. Nunc congue, libero in gravida convallis \cite{DBLP:conf/focs/HopcroftPV75}, orci nibh sodales quam, id egestas felis mi nec nisi. Suspendisse tincidunt, est ac vestibulum posuere, justo odio bibendum urna, rutrum bibendum dolor sem nec tellus. 
+
+% \begin{lemma} [Quisque blandit tempus nunc]
+% Sed interdum nisl pretium non. Mauris sodales consequat risus vel consectetur. Aliquam erat volutpat. Nunc sed sapien ligula. Proin faucibus sapien luctus nisl feugiat convallis faucibus elit cursus. Nunc vestibulum nunc ac massa pretium pharetra. Nulla facilisis turpis id augue venenatis blandit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+% \end{lemma}
+
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+
+% \section{Morbi eros magna}
+
+% Morbi eros magna, vestibulum non posuere non, porta eu quam. Maecenas vitae orci risus, eget imperdiet mauris. Donec massa mauris, pellentesque vel lobortis eu, molestie ac turpis. Sed condimentum convallis dolor, a dignissim est ultrices eu. Donec consectetur volutpat eros, et ornare dui ultricies id. Vivamus eu augue eget dolor euismod ultrices et sit amet nisi. Vivamus malesuada leo ac leo ullamcorper tempor. Donec justo mi, tempor vitae aliquet non, faucibus eu lacus. Donec dictum gravida neque, non porta turpis imperdiet eget. Curabitur quis euismod ligula. 
+
+
+%%
+%% Bibliography
+%%
+
+%% Please use bibtex, 
+\nocite{*}
+\bibliography{refs}
+
+% \appendix
+
+% \section{Styles of lists, enumerations, and descriptions}\label{sec:itemStyles}
+
+% List of different predefined enumeration styles:
+
+% \begin{itemize}
+% \item \verb|\begin{itemize}...\end{itemize}|
+% \item \dots
+% \item \dots
+% %\item \dots
+% \end{itemize}
+
+% \begin{enumerate}
+% \item \verb|\begin{enumerate}...\end{enumerate}|
+% \item \dots
+% \item \dots
+% %\item \dots
+% \end{enumerate}
+
+% \begin{alphaenumerate}
+% \item \verb|\begin{alphaenumerate}...\end{alphaenumerate}|
+% \item \dots
+% \item \dots
+% %\item \dots
+% \end{alphaenumerate}
+
+% \begin{romanenumerate}
+% \item \verb|\begin{romanenumerate}...\end{romanenumerate}|
+% \item \dots
+% \item \dots
+% %\item \dots
+% \end{romanenumerate}
+
+% \begin{bracketenumerate}
+% \item \verb|\begin{bracketenumerate}...\end{bracketenumerate}|
+% \item \dots
+% \item \dots
+% %\item \dots
+% \end{bracketenumerate}
+
+% \begin{description}
+% \item[Description 1] \verb|\begin{description} \item[Description 1]  ...\end{description}|
+% \item[Description 2] Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \item[Description 3]  \dots
+% %\item \dots
+% \end{description}
+
+% \cref{testenv-proposition} and \autoref{testenv-proposition} ...
+
+% \section{Theorem-like environments}\label{sec:theorem-environments}
+
+% List of different predefined enumeration styles:
+
+% \begin{theorem}\label{testenv-theorem}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{theorem}
+
+% \begin{lemma}\label{testenv-lemma}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{lemma}
+
+% \begin{corollary}\label{testenv-corollary}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{corollary}
+
+% \begin{proposition}\label{testenv-proposition}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{proposition}
+
+% \begin{conjecture}\label{testenv-conjecture}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{conjecture}
+
+% \begin{observation}\label{testenv-observation}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{observation}
+
+% \begin{exercise}\label{testenv-exercise}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{exercise}
+
+% \begin{definition}\label{testenv-definition}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{definition}
+
+% \begin{example}\label{testenv-example}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{example}
+
+% \begin{note}\label{testenv-note}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{note}
+
+% \begin{note*}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{note*}
+
+% \begin{remark}\label{testenv-remark}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{remark}
+
+% \begin{remark*}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{remark*}
+
+% \begin{claim}\label{testenv-claim}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{claim}
+
+% \begin{claim*}\label{testenv-claim2}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{claim*}
+
+% \begin{proof}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{proof}
+
+% \begin{claimproof}
+% Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+% \end{claimproof}
+
+\end{document}
