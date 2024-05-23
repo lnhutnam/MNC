@@ -1,0 +1,418 @@
+\chapter{HÌNH HỌC EUCLIDEAN}
+
+Trong chương này, chúng tôi trình bày những kiến thức cơ bản về hình học Euclidean bao gồm các phép đẳng cực trên mặt phẳng Euclidean và khái niệm đường cong trong không gian hữu hạn chiều $\R^n$.
+
+\section{Các phép đẳng cực trong mặt phẳng Euclidean}
+
+Mục đích của phần này là nghiên cứu các ánh xạ trên $\R^n$ mà bảo toàn khoảng cách, tức là\ \emph{đẳng cực} của không gian hữu hạn chiều $\R^n$. Trước khi bắt đầu, chúng ta định nghĩa khái niệm khoảng cách trên không gian hữu hạn chiều $\R^n$ theo cách thông thường.
+
+\begin{defi}[Tích trong]
+  \emph{Tích trong(Inner product)} trên $\R^n$ được định nghĩa bởi
+  \[
+    (\mathbf{x}, \mathbf{y}) = \mathbf{x}\cdot \mathbf{y} = \sum_{i = 1}^n x_i y_i.
+  \]
+\end{defi}
+
+\begin{defi}[Chuẩn Euclidean]
+  \emph{Chuẩn Euclidean (Euclidean norm)} của $\mathbf{x} \in \R^n$ là
+  \[
+    \|\mathbf{x}\| = \sqrt{(\mathbf{x}, \mathbf{x})}.
+  \]
+  Điều này định nghĩa một metric trên $\R^n$ bởi
+  \[
+    d(\mathbf{x}, \mathbf{y}) = \|\mathbf{x} - \mathbf{y}\|.
+  \]
+\end{defi}
+
+Lưu ý rằng tích trong và chuẩn đều phụ thuộc vào sự lựa chọn gốc tọa độ của chúng ta, nhưng khoảng cách thì không. Nói chung, chúng ta không mong muốn có sự lựa chọn về gốc tọa độ --- việc chọn gốc tọa độ chỉ để cho một cách biểu diễn (rất) thuận tiện cho các điểm. Gốc tọa độ không phải là một điểm đặc biệt (về lý thuyết). Theo ngôn ngữ bình thường, chúng ta nói rằng chúng ta xem $\R^n$ dưới dạng \emph{không gian affine} thay vì \emph{không gian vector}.
+
+\begin{defi}[Đẳng cực]
+  Một ánh xạ $f: \R^n \to \R^n$ là một đẳng cự (isometry) nếu
+  \[
+    d(f(\mathbf{x}), f(\mathbf{y})) = d(\mathbf{x}, \mathbf{y})
+  \]
+  với mọi $\mathbf{x}, \mathbf{y} \in \R^n$.
+\end{defi}
+
+Lưu ý rằng $f$ không bắt buộc phải tuyến tính. Điều này là do chúng ta đang xem $\R^n$ như một không gian affine và tính tuyến tính chỉ có ý nghĩa nếu chúng ta có một điểm được chỉ định làm gốc. Tuy nhiên, chúng ta vẫn sẽ xem các phép đẳng cự tuyến tính là các phép đẳng cự "đặc biệt", vì chúng thuận tiện hơn khi làm việc, mặc dù về cơ bản không đặc biệt.
+
+Mục tiêu hiện tại của chúng ta là phân loại các \emph{tất cả} phép đẳng cự của $\R^n$. Chúng ta bắt đầu với các đẳng cự tuyến tính. Nhắc lại định nghĩa sau:
+\begin{defi}[Ma trận trực giao]
+  Một ma trận $n \times n$ được gọi là \emph{trực giao (orthogonal)} nếu $AA^T = A^T A = I$. Nhóm của tất cả ma trận trực giao được gọi là nhóm trực giao $\Or(n)$.
+\end{defi}
+
+Một cách tổng quát, với mọi ma trận $A$ và $\mathbf{x}, \mathbf{y} \in \R^n$, ta có
+\[
+  (A\mathbf{x}, A \mathbf{y}) = (A\mathbf{x})^T (A \mathbf{y}) = \mathbf{x}^T A^T A \mathbf{y} = (\mathbf{x}, A^T A \mathbf{y}).
+\]
+Nên $A$ trực giao nếu và chỉ nếu $(A\mathbf{x}, A\mathbf{y}) = (\mathbf{x}, \mathbf{y})$ với mọi $\mathbf{x}, \mathbf{y} \in \R^n$.
+
+Nhắc lại về tích trong có thể khai triển dựa trên định nghĩa chuẩn như sau:
+\[
+  (\mathbf{x}, \mathbf{y}) = \frac{1}{2}(\|\mathbf{x} + \mathbf{y}\|^2 - \|\mathbf{x}\|^2 -\|\mathbf{y}\|^2).
+\]
+Vì vậy, nếu $A$ bảo toàn chuẩn, thì nó bảo toàn tích trong, và điều ngược lại rõ ràng là đúng. Vì vậy $A$ trực giao khi và chỉ nếu $\|A\mathbf{x}\| = \|\mathbf{x}\|$ với mọi $\mathbf{x} \in \R^n$. Do đó ma trận là trực giao khi và chỉ khi chúng là phép đẳng cự (isometries).
+
+Một cách tổng quát, gọi
+\[
+  f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}.
+\]
+Thì
+\[
+  d(f(\mathbf{x}), f(\mathbf{y})) = \|A(\mathbf{x} - \mathbf{y})\|.
+\]
+
+Vì vậy, mọi $f$ có dạng này đều là phép đẳng cự khi và chỉ khi $A$ trực giao. Điều này không quá ngạc nhiên. Điều có thể không được mong đợi là tất cả các phép đo đều có dạng này.
+
+\begin{theorem}
+  Mọi đẳng cự của $f: \R^n \to \R^n$ có dạng
+  \[
+    f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}.
+  \]
+  với $A$ trực giao và $\mathbf{b} \in \R^n$.
+\end{theorem}
+
+\begin{proof}
+  Gọi $f$ là một đẳng cự. Gọi $\mathbf{e}_1, \cdots, \mathbf{e}_n$ là cơ sở chuẩn tắc của $\R^n$. Gọi
+  \[
+    \mathbf{b} = f(\mathbf{0}), \quad \mathbf{a}_i = f(\mathbf{e}_i) - \mathbf{b}.
+  \]
+  Ý tưởng là xây dựng ma trận $A$ từ $\mathbf{a}_i$. Với $A$ trực giao, $\{\mathbf{a}_i\}$ phải là cơ sở trực chuẩn (orthonormal basis)
+
+  Thật vậy, chúng ta có thể tính toán
+  \[
+    \|\mathbf{a}_i\| = \|\mathbf{f}(\mathbf{e}_i) - f(\mathbf{0})\| = d(f(\mathbf{e}_i), f(\mathbf{0})) = d(\mathbf{e}_i, \mathbf{0}) = \|\mathbf{e}_i\| = 1.
+  \]
+  Với $i \not = j$, ta có:
+  \begin{align*}
+    (\mathbf{a}_i, \mathbf{a}_j) &= -(\mathbf{a}_i, -\mathbf{a}_j) \\
+    &=-\frac{1}{2}(\|\mathbf{a}_i - \mathbf{a}_j\|^2 - \|\mathbf{a}_i\|^2 - \|\mathbf{a}_j\|^2)\\
+    &= -\frac{1}{2}(\|f(\mathbf{e}_i) - f(\mathbf{e}_j)\|^2 - 2)\\
+    &= -\frac{1}{2}(\|\mathbf{e}_i - \mathbf{e}_j\|^2 - 2)\\
+    &= 0
+  \end{align*}
+  Thế nên $\mathbf{a}_i$ và $\mathbf{a}_j$ trực giao. Nói cách khác, $\{\mathbf{a}_i\}$ hình thành một tập trực giao. Một kết quả dễ dàng là mọi tập trực giao đều phải độc lập tuyến tính. Vì chúng ta đã tìm được $n$ vector trực chuẩn nên chúng tạo thành một cơ sở trực chuẩn.
+
+  Do đó, ma trận $A$ với các cột được cho bởi vectơ cột $\mathbf{a_i}$ là ma trận trực giao. Chúng ta xác định một đẳng cự mới
+  \[
+    g(\mathbf{x}) = A\mathbf{x} + \mathbf{b}.
+  \]
+  Ta muốn chứng minh $f = g$. Bằng cách xây dựng, ta đã biết $g(\mathbf{x}) = f(\mathbf{x})$ là đúng với $\mathbf{x} = \mathbf{0}, \mathbf{e}_1, \cdots, \mathbf{e}_n$.
+
+  Chúng ta thấy rằng $g$ là khả nghịch. Đặc biệt,
+  \[
+    g^{-1}(\mathbf{x}) = A^{-1}(\mathbf{x} - \mathbf{b}) = A^T \mathbf{x} - A^T\mathbf{b}.
+  \]
+  Hơn nữa, nó là một phép đẳng cự, vì $A^T$ là trực giao (hoặc chúng ta có thể dựa vào thực tế tổng quát hơn rằng nghịch đảo của các phép đẳng cự là các phép đẳng cự).
+
+  Ta định nghĩa
+  \[
+    h = g^{-1}\circ f.
+  \]
+  Vì nó là hợp của các phép đẳng cự nên nó cũng là một phép đẳng cự. Hơn nữa, nó còn cố định $\mathbf{x} = \mathbf{0}, \mathbf{e_1}, \cdots, \mathbf{e_n}$.
+
+  Hiện tại chỉ cần chứng minh rằng $h$ là duy nhất.
+
+  Gọi $\mathbf{x} \in \R^n$, và khai triển nó trong cơ sở như sau:
+  \[
+    \mathbf{x} = \sum_{i = 1}^n x_i \mathbf{e}_i.
+  \]
+  Gọi
+  \[
+    \mathbf{y} = h(\mathbf{x}) = \sum_{i = 1}^n y_i \mathbf{e}_i.
+  \]
+  Ta có thể tính:
+  \begin{align*}
+    d(\mathbf{x}, \mathbf{e}_i)^2 &= (\mathbf{x} - \mathbf{e}_i, \mathbf{x} - \mathbf{e}_i) = \|\mathbf{x}\|^2 + 1 - 2 x_i\\
+    d(\mathbf{x}, \mathbf{0})^2 &= \|\mathbf{x}\|^2.
+  \end{align*}
+  Tương tự, ta có:
+  \begin{align*}
+    d(\mathbf{y}, \mathbf{e}_i)^2 &= (\mathbf{y} - \mathbf{e}_i, \mathbf{y} - \mathbf{e}_i) = \|\mathbf{y}\|^2 + 1 - 2 y_i\\
+    d(\mathbf{y}, \mathbf{0})^2 &= \|\mathbf{y}\|^2.
+  \end{align*}
+  Vì $h$ là đẳng cự và cố định $\mathbf{0}, \mathbf{e}_1, \cdots, \mathbf{e}_n$, và bởi định nghĩa $h(\mathbf{x}) = \mathbf{y}$, ta phải có
+  \[
+    d(\mathbf{x}, \mathbf{0}) = d(\mathbf{y}, \mathbf{0}), \quad d(\mathbf{x}, \mathbf{e}_i) = d(\mathbf{y}, \mathbf{e}_i).
+  \]
+  Đẳng thức đầu tiên cho ta $\|\mathbf{x}\|^2 = \|\mathbf{y}\|^2$, và đẳng thức còn lại ám chỉ $x_i = y_i$ với mọi $i$. Nói cách khác, $\mathbf{x} = \mathbf{y} = h(\mathbf{x})$. Thế nên $h$ là duy nhất.
+  Chứng minh hoàn tất.
+\end{proof}
+
+Tiếp theo chúng ta sẽ tổng hợp tất cả các đẳng cự thành một nhóm.
+\begin{defi}[Nhóm đẳng cự]
+  \emph{Nhóm đẳng cự} $\Isom(\R^n)$ là nhóm gồm tất cả các phép đối xứng của $\R^n$, là một nhóm theo thành phần.
+\end{defi}
+
+\begin{eg}[Sự phản xạ trong một siêu phẳng affine]
+  Gọi $H \subseteq \R^n$ là một siêu phẳng affine được cho bởi
+  \[
+    H = \{\mathbf{x} \in \R^n: \mathbf{u} \cdot \mathbf{x} = c\},
+  \]
+  trong đó $\|\mathbf{u}\| = 1$ và $c \in \R$. Đây chỉ là một khái quát tự nhiên của một mặt phẳng 2 chiều trong $ \ r^3 $. Lưu ý rằng không giống như không gian con vector, nó không phải chứa gốc tọa độ (vì nguồn gốc không phải là một điểm đặc biệt).
+
+  Phản xạ trong $H$, được viết là $R_H$, là một ánh xạ
+  \begin{align*}
+    R_H: \R^n &\to \R^n\\
+    \mathbf{x} &\mapsto \mathbf{x} - 2(\mathbf{x} \cdot \mathbf{u} - c)\mathbf{u}
+  \end{align*}
+
+    Chúng ta cần kiểm tra những tính chất mà chúng ta nghĩ rằng một phản xạ nên có. Lưu ý rằng mọi điểm trong $ \ r^n $ có thể được viết là $\mathbf {a} + t \mathbf {u} $, trong đó $ \mathbf {a} \in h $. Sau đó, sự phản xạ sẽ ánh xạ điểm này đến $\mathbf {A} - T \mathbf {u} $.
+  \begin{center}
+    \begin{tikzpicture}
+      \node [circ] at (0, -2) {};
+      \node [anchor = north east] at (0, -2) {$\mathbf{0}$};
+      \draw [->] (0, -2) -- (3.5, 1) node [right] {$\mathbf{a}$};
+      \draw [->] (3.5, 1) -- +(0, -1.5) node [below] {$\mathbf{a} - t\mathbf{u}$};
+      \draw [fill=mblue, fill opacity=0.7] (0, 0) -- (5, 0) -- (7, 2) node [right] {$H$} -- (2, 2) -- cycle;
+      \draw [->] (3.5, 1) -- +(0, 1.5) node [above] {$\mathbf{a} + t\mathbf{u}$};
+    \end{tikzpicture}
+  \end{center}
+  Đây là một kiểm tra thông thường:
+  \[
+    R_H (\mathbf{a} + t\mathbf{u}) = (\mathbf{a} + t\mathbf{u}) - 2t\mathbf{u} = \mathbf{a} - t\mathbf{u}.
+  \]
+  Cụ thể, chúng ta biết $R_H$ cố định chính xác các điểm của $H$.
+
+  Ngược lại cũng đúng --- với bất kỳ đẳng cự $S \in \Isom(\R^n)$ nào mà cố định những điểm trong một số siêu phẳng affine $H$ thì duy nhất hoặc $R_H$.
+  
+  Để chứng minh điều này, trước tiên chúng ta tịnh tiến mặt phẳng sao cho nó trở thành không gian con vector. Sau đó, chúng ta có thể sử dụng phép toán đại số tuyến tính của chúng ta. Đối với bất kỳ $\mathbf {a} \in \R^n $, chúng ta có thể định nghĩa phép tịnh tiến bởi $\mathbf{a}$ như sau:
+  \[
+    T_{\mathbf{a}}(\mathbf{x}) = \mathbf{x} + \mathbf{a}.
+  \]
+  Đây rõ ràng là một phương pháp đẳng cự.
+
+  Ta chọn bất kỳ một $\mathbf{a} \in H$, và gọi $R = T_{-\mathbf{a}} S T_\mathbf{a} \in \Isom(\R^n)$. Thì $R$ cố định chính xác $H' = T_{-\mathbf{a}} H$. Vì $\mathbf{0} \in H'$, $H'$ là một không gian vector con. Cụ thể mà nói, nếu $H = \{\mathbf{x}: \mathbf{x}\cdot \mathbf{u} = c\}$, thì bằng cách đặt $c = \mathbf{a}\cdot \mathbf{u}$, ta tìm thấy
+  \[
+    H' = \{\mathbf{x}: \mathbf{x}\cdot \mathbf{u} = 0\}.
+  \]
+  Để hiểu $ R $, chúng ta đã biết nó cố định mọi thứ trong $H'$. Vì vậy, chúng ta muốn xem những gì nó làm với $\mathbf{u}$. Lưu ý rằng vì $R$ là một đẳng cự và nó cố định gốc tọa độ, cụ thể là nó là một ánh xạ trực giao. Do đó, với bất kỳ $\mathbf{x} \in h '$, ta thu được:
+  \[
+    (R\mathbf{u}, \mathbf{x}) = (R\mathbf{u}, R\mathbf{x}) = (\mathbf{u}, \mathbf{x}) = 0.
+  \]
+  Vì $R\mathbf{u}$ vuông gốc với $H'$. Vì thế $R\mathbf{u} = \lambda \mathbf{u}$ với một số $\lambda$. Vì $R$ là một đẳng cự, ta có $\|R\mathbf{u}\|^2 = 1$. Vì thế $|\lambda|^2 = 1$, và do đó $\lambda = \pm 1$. Thế nên nếu $\lambda = 1$, và $R = \id$; hoặc $\lambda = -1$, và $R = R_{H'}$, ta luôn có các ma trận trực giao.
+
+  Do đó, theo đó $S = \id_{\R^n} $, hoặc $S$ là phản xạ trong $H$.
+  
+  Do đó, ta tìm thấy mỗi phản xạ $R_H$ là đẳng cự cố định duy nhất $H$ nhưng không $\id_{\R^n}$
+\end{eg}
+% It is an exercise in the example sheet to show that every isometry of $\R^n$ is a composition of at most $n + 1$ reflections. If the isometry fixes $0$, then $n$ reflections will suffice.
+
+Xem xét nhóm con $\Isom(\R^n)$ mà cố định $\mathbf{0}$. Bởi khai triển tổng quát cho đẳng cự tổng quát, ta đã biết đây là tập $\{f(\mathbf{x}) = A\mathbf{x}: A A^T = I\} \cong \Or(n)$, nhóm trực giao. 
+
+Với mỗi $A \in \Or(n)$, ta phải có $\det(A)^2 = 1$. So $\det A = \pm 1$. Ta sử dụng điều này để định những nhóm conkhac1, nhóm trực giao đặc biệt (special orthogonal group).
+\begin{defi}[Nhóm trực giao đặc biệt]
+  Nhóm trực giao đặc biệt là nhóm
+  \[
+    \SO(n) = \{A \in \Or(n):\det A = 1\}.
+  \]
+\end{defi}
+
+Chúng ta có thể nhìn vào những điều này rõ ràng cho chiều thấp.
+\begin{eg}
+  Xem xét
+  \[
+    A =
+    \begin{pmatrix}
+      a & b\\
+      c & d
+    \end{pmatrix} \in \Or(2)
+  \]
+  có tính trực giao mà sau đó ràng buộc
+  \[
+    a^2 + c^2 = b^2 + d^2 = 1,\quad ab + cd = 0.
+  \]
+  Bây giờ, ta chọn $0 \leq \theta, \varphi \leq 2\pi$ mà
+  \begin{align*}
+    a &= \cos \theta & b &= -\sin \varphi\\
+    c &= \sin \theta & d &= \cos \varphi.
+  \end{align*}
+  Thì $ab + cd = 0$ cho $\tan \theta = \tan \varphi$ (nếu $\cos \theta$ và $\cos \varphi$ bằng không, ta nói một cách hình thức rằng cả hai là vô hạn. Thế nên, nếu $\theta = \varphi$ hay $\theta = \varphi \pm \pi$. Dẫn đến việc ta có
+  \[
+    A=
+    \begin{pmatrix}
+      \cos \theta & -\sin \theta\\
+      \sin \theta & \cos \theta
+    \end{pmatrix}\text{ or }
+    A =
+    \begin{pmatrix}
+      \cos \theta & \sin \theta\\
+      \sin \theta & -\cos \theta
+    \end{pmatrix}
+  \]
+  một cách tương ứng. Trong trường hợp đầu tiên, đây là một phép xoay thông qua $\theta $ quanh gốc tọa độ. Đây là định thức $1$, và do đó $A \in \SO(2)$.
+ 
+  Trong trường hợp thứ hai, đây là một phản xạ trong đường thẳng $\ell$ tại góc $\frac{\theta}{2}$ so với trục $x$. Thì $\det A = -1$ và $A \not\in \SO(2)$.
+
+  Vì vậy, trong hai chiều, các ma trận trực giao là các phản xạ hoặc xoay --- những điều kiện trong $\SO(2)$ là các phép xoay và các phép khác là các phản xạ.
+\end{eg}
+Trước khi chúng ta có thể chuyển sang ba chiều, chúng ta cần có khái niệm định hướng. Chúng ta có thể trực giác biết một hướng là gì, nhưng khá khó để xác định hướng chính thức. Điều tốt nhất chúng ta có thể làm là cho biết liệu hai cơ sở nhất định của không gian vector có "cùng một hướng" hay không. Do đó, sẽ có ý nghĩa khi định nghĩa một định hướng là một loại cơ sở tương đương của "cùng một hướng". Chúng ta chính thức xác định nó như sau:
+\begin{defi}[Hướng]
+  Một hướng của một không gian vector là một lớp tương đương của cơ sở --- gọi $\mathbf{v}_1, \cdots, \mathbf{v}_n$ và $\mathbf{v}_1', \cdots, \mathbf{v}_n'$ là hai cơ sở và $A$ là ma trận chuyển cơ sở. Ta nói rằng hai cơ sở tương đương nếu và chỉ nếu $\det A> 0 $. Đây là một quan hệ tương đương trên các cơ sở và các lớp tương đương là các hướng.
+\end{defi}
+
+\begin{defi}[Đẳng cự bảo toàn hướng]
+  Một đẳng cự $f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}$ là bảo toàn hướng nếu $\det A = 1$. Ngược lại, nếu $\det A = -1$, ta nói nó là bảo toàn hướng.
+\end{defi}
+
+\begin{eg}
+  Bây giờ, ta muốn kiểm tra $\Or(3)$. Đầu tiên, tập trung vào trường hợp trong đó $A \in \SO(3)$, tức là \ $\det A = 1$. Thì ta có thể tính
+  \[
+    \det(A - I) = \det(A^T - I) = \det(A)\det(A^T - I) = \det(I - A) = -\det(A - I).
+  \]
+  Vì thế $\det (A - I) = 0$, tức là \ $+1$ là một giá trị riêng trong $\R$. Thế nên có một số $\mathbf{v}_1 \in \R^3$ mà thỏa $A\mathbf{v}_1 = \mathbf{v}_1$.
+
+  Ta đặt $W = \bra \mathbf{v}_1\ket^{\perp}$. Gọi $\mathbf{w} \in W$. Thì ta có thể tính toán
+  \[
+    (A\mathbf{w}, \mathbf{v}_1) = (A\mathbf{w}, A\mathbf{v}_1) = (\mathbf{w}, \mathbf{v}_1) = 0.
+  \]
+  Vì thế $A\mathbf{w} \in W$. Nói cách khác, $W$ được cố định bởi $A$, and $A|_{W}: W \to W$ được định nghĩa tốt. Hơn nữa, nó vẫn trực giao và có định thức $1$. Vì thế nó là một phép xoay của không gian vector hai chiều $W$
+
+  Ta chọn $\{\mathbf{v}_2, \mathbf{v}_3\}$ là một cơ sở trực chuẩn của $W$. Thì dưới những cơ sở $\{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}$, $A$  được biểu diễn bởi
+  \[
+    A =
+    \begin{pmatrix}
+      1 & 0 & 0\\
+      0 & \cos \theta & - \sin \theta\\
+      0 & \sin \theta & \cos \theta
+    \end{pmatrix}.
+  \]
+  Đây là một đẳng cự bảo toàn hướng tổng quát nhất của $\R^3$ mà cố định gốc tọa độ.
+
+  Thế còn các bảo toàn hướng khác thì sao?
+  Giả định $\det A = -1$. Thì $\det(-A) = 1$. Thế nên trong một số cơ sở trực chuẩn, ta có thể khai triển $A$ như sau:
+  \[
+    -A =
+    \begin{pmatrix}
+      1 & 0 & 0\\
+      0 & \cos \theta & - \sin \theta\\
+      0 & \sin \theta & \cos \theta
+    \end{pmatrix}.
+  \]
+  Vì thế $A$ có dạng như sau:
+  \[
+    A =
+    \begin{pmatrix}
+      -1 & 0 & 0\\
+      0 & \cos \varphi & -\sin \varphi\\
+      0 & \sin \varphi & \cos \varphi
+    \end{pmatrix},
+  \]
+  trong đó $\varphi = \theta + \pi$. Đây là một phản xạ đã được xoay, tức là đầu tiên chúng ta thực hiện một phép phản xạ, sau đó xoay. Trong những trường hợp cụ thể trong đó $\varphi = 0$, đây là một phép phản xạ thuần.
+\end{eg}
+
+\section{Các đường cong trong không gian $\R^n$}
+
+Tiếp theo, chúng ta sẽ xem xét ngắn gọn các đường cong trong $\R^n $. Điều này sẽ được trình bày ngắn gọn, vì các đường cong trong $\R^n $ không quá thú vị. Sự thật thú vị nhất có thể là đường cong ngắn nhất giữa hai điểm là một đường thẳng, nhưng chúng ta thậm chí không cần chứng minh điều đó.
+
+\begin{defi}[Curve]
+  Một đường cong $\Gamma$ in $\R^n$ là một ánh xạ liên tục $\Gamma: [a, b] \to \R^n$.
+\end{defi}
+Ở đây chúng ta có thể nghĩ về đường cong như là quỹ đạo của một hạt di chuyển qua thời gian. Mục tiêu chính của chúng ta trong phần này là xác định độ dài của một đường cong. Chúng ta có thể muốn định nghĩa độ dài là
+\[
+  \int_a^b \|\Gamma'(t)\|\;\d t,
+\]
+đây là một phép tính rất quen thuộc mà ta có thể thấy ở Giáo trình Vi tích phân. Tuy nhiên, chúng ta không thể làm điều này, vì định nghĩa của chúng tôi về một đường cong không yêu cầu $\gamma$ phải liên tục khả vi. Nó chỉ đơn thuần là bắt buộc phải liên tục. Do đó chúng ta phải xác định độ dài theo cách vòng quanh hơn.
+
+Một cách tương tự như định nghĩa của tích phân Riemann, chúng ta xem xét một miền được cắt nhỏ $\mathcal{D} = a = t_0 < t_1 < \cdots < t_N = b$ của $[a, b]$, và một tập $P_i = \Gamma(t_i)$. Ta định nghĩa
+\[
+  S_\mathcal{D} = \sum_i \|\overrightarrow{P_i P_{i + 1}}\|.
+\]
+\begin{center}
+  \begin{tikzpicture}
+    \node [circ] (0) at (0, 0) {};
+    \node [circ] (1) at (0.5, 1) {};
+    \node [circ] (2) at (1.3, 0.9) {};
+    \node [circ] (3) at (1.6, 0.2) {};
+    \node [circ] (4) at (2.4, 0.2) {};
+    \node [circ] (5) at (3, 1.2) {};
+    \node [circ] (6) at (5, 0.5) {};
+
+    \node [left] at (0) {$P_0$};
+    \node [left] at (1) {$P_1$};
+    \node [right] at (2) {$P_2$};
+    \node [above] at (5) {$P_{N - 1}$};
+    \node [right] at (6) {$P_N$};
+
+    \draw plot [smooth, tension=0.6] coordinates {(0) (1) (1, 1.6) (2) (3) (2, -0.4) (4) (5) (6)};
+    \draw [mred] (0) -- (1) -- (2) -- (3);
+    \draw [mred, dotted] (3) -- (4);
+    \draw [mred] (4) -- (5) -- (6);
+  \end{tikzpicture}
+\end{center}
+Lưu ý rằng nếu chúng ta thêm nhiều điểm, thì $S_\mathcal{D}$ sẽ tăng lên, bởi bất đẳng thức tam giác. Nên có có ý nghĩa để định nghĩa độ dài bằng chặn trên nhỏ nhất (supremum)
+\begin{defi}[Length of curve]
+  Độ dài của một đường cong $\Gamma: [a, b] \to \R^n$ là
+  \[
+    \ell = \sup_{\mathcal{D}} S_{\mathcal{D}},
+  \]
+  nếu supremum tồn tại.
+\end{defi}
+Một cách khác, nếu ta đặt
+\[
+  \mathrm{mesh}(\mathcal{D})= \max_i (t_i - t_{i - 1}),
+\]
+thì nếu $\ell$ tồn tại, thì ta có
+\[
+  \ell = \lim_{\mathrm{mesh}(\mathcal{D}) \to 0} s_{\mathcal{D}}.
+\]
+Lưu ý cũng bởi định nghĩa, ta có thể viết
+\[
+  \ell = \inf\{\tilde{\ell}: \tilde{\ell} \geq S_{\mathcal{D}}\text{ for all }\mathcal{D}\}.
+\]
+Định nghĩa tự nó không quá hữu ích, vì không có cách nào tốt và dễ dàng để kiểm tra xem supremum có tồn tại không. Tuy nhiên, sự khả vi cho phép chúng ta tính toán điều này một cách dễ dàng theo cách dự kiến.
+\begin{prop}
+  Nếu $\Gamma$ khả vi liên tục (tức là \ $C^1$), thì độ dài của $\Gamma$ được cho bởi
+  \[
+    \length(\Gamma) = \int_a^b \|\Gamma'(t)\|\;\d t.
+  \]
+\end{prop}
+Phần chứng minh của mệnh đề này là một kiểm tra cẩn thận rằng định nghĩa của tích phân trùng với định nghĩa về độ dài.
+\begin{proof}
+  Để đơn giản và không mất tính tổng quát, ta giả sử rằng $n = 3$. Tất nhiên, phần chứng minh sẽ hoạt động được với tất cả các chiều có thể có. Ta viết như sau:
+  \[
+    \Gamma(t) = (f_1(t), f_2(t), f_3(t)).
+  \]
+  Với mọi $s \not= t \in [a, b]$, định lý giá trị trung cho chúng ta biết
+  \[
+    \frac{f_i(t) - f_i(s)}{t - s} = f'_i (\xi_i)
+  \]
+  với một số $\xi_i \in (s, t)$, với tất cả $i = 1, 2, 3$.
+
+  Bây giờ, lưu rằng rằng $f_i'$ liên tục trên một khoảng đóng bị chặn, và do đó liên tục đồng nhất
+  Với tất cả $\varepsilon \in 0$, có một số $\delta > 0$ mà thỏa mãn $|t - s| < \delta$ ám chỉ
+  \[
+    |f_i'(\xi_i) - f'(\xi)| < \frac{\varepsilon}{3}
+  \]
+  với mọi $\xi \in (s, t)$. Dẫn đến, với bất kỳ $\xi \in (s, t)$, ta có
+  \[
+    \left\|\frac{\Gamma(t) - \Gamma(s)}{t - s} - \Gamma'(\xi)\right\| = \left\|\begin{pmatrix}f'_1(\xi_1)\\ f'_2(\xi_2)\\ f'_3(\xi_3)\end{pmatrix} - \begin{pmatrix}f'_1(\xi)\\ f'_2(\xi)\\ f'_3(\xi)\end{pmatrix}\right\| \leq \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+  \]
+  Nói cách khác,
+  \[
+    \|\Gamma(t) - \Gamma(s) - (t - s) \Gamma'(\xi)\| \leq \varepsilon(t - s).
+  \]
+  Ta đổi biến $t = t_i$, $s = t_{i - 1}$ và $\xi = \frac{s + t}{2}$.
+
+  Sử dụng bất đẳng thức tam giá, ta có:
+  \begin{multline*}
+    (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| - \varepsilon(t_i - t_{i - 1}) < \|\Gamma(t_i) - \Gamma(t_{i - 1})\| \\
+    < (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| + \varepsilon(t_i - t_{i - 1}).
+  \end{multline*}
+  Lấy tổng trên tất cả $i$, ta thu được
+  \begin{multline*}
+    \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| - \varepsilon(b - a) < S_{\mathcal{D}}\\
+    < \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| + \varepsilon(b - a),
+  \end{multline*}
+  mà đúng với bất cứ khi nào $\mathrm{mesh}(\mathcal{D}) < \delta$.
+
+  Bởi vì $\Gamma'$ là liên tục, và vì sự khả tích, ta biết
+  \[
+    \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| \to \int_a^b \|\Gamma'(t)\|\;\d t
+  \]
+  như $\mathrm{mesh}(\mathcal{D}) \to 0$, và
+  \[
+    \length(\Gamma) = \lim_{\mathrm{mesh}(\mathcal{D}) \to 0} S_\mathcal{D} = \int_a^b \|\Gamma'(t)\|\;\d t.\qedhere
+  \]
+  Chứng minh hoàn tất.
+\end{proof}

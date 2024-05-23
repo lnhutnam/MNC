@@ -1,0 +1,155 @@
+\section{Isometries of the Euclidean plane}
+
+\subsection{Basic Definitions}
+
+\begin{frame}{(Standard) inner product}
+    \begin{defi}[(Standard) inner product]
+      The \emph{(standard) inner product} on $\R^n$ is defined by
+      \[
+        (\mathbf{x}, \mathbf{y}) = \mathbf{x}\cdot \mathbf{y} = \sum_{i = 1}^n x_i y_i.
+      \]
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Euclidean Norm}
+    \begin{defi}[Euclidean Norm]
+      The \emph{Euclidean norm} of $\mathbf{x} \in \R^n$ is
+      \[
+        \|\mathbf{x}\| = \sqrt{(\mathbf{x}, \mathbf{x})}.
+      \]
+      This defines a metric on $\R^n$ by
+      \[
+        d(\mathbf{x}, \mathbf{y}) = \|\mathbf{x} - \mathbf{y}\|.
+      \]
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Isometry}
+    \begin{defi}[Isometry]
+      A map $f: \R^n \to \R^n$ is an \emph{isometry} of $\R^n$ if
+      \[
+        d(f(\mathbf{x}), f(\mathbf{y})) = d(\mathbf{x}, \mathbf{y})
+      \]
+      for all $\mathbf{x}, \mathbf{y} \in \R^n$.
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Orthogonal matrix}
+    \begin{defi}[Orthogonal matrix]
+      An $n \times n$ matrix $A$ is \emph{orthogonal} if $AA^T = A^T A = I$. The group of all orthogonal matrices is the orthogonal group $\Or(n)$.
+    \end{defi}
+\end{frame}
+
+\subsection{Theorem of Orthogonal}
+
+\begin{frame}{Theorem of Orthogonal}
+    \begin{theorem}
+      Every isometry of $f: \R^n \to \R^n$ is of the form
+      \[
+        f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}.
+      \]
+      for $A$ orthogonal and $\mathbf{b} \in \R^n$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Proof}
+    Let $f$ be an isometry. Let $\mathbf{e}_1, \cdots, \mathbf{e}_n$ be the standard basis of $\R^n$. Let
+  \[
+    \mathbf{b} = f(\mathbf{0}), \quad \mathbf{a}_i = f(\mathbf{e}_i) - \mathbf{b}.
+  \]
+  The idea is to construct our matrix $A$ out of these $\mathbf{a}_i$. For $A$ to be orthogonal, $\{\mathbf{a}_i\}$ must be an orthonormal basis.
+\end{frame}
+
+\begin{frame}{Proof}
+    Indeed, we can compute
+  \[
+    \|\mathbf{a}_i\| = \|\mathbf{f}(\mathbf{e}_i) - f(\mathbf{0})\| = d(f(\mathbf{e}_i), f(\mathbf{0})) = d(\mathbf{e}_i, \mathbf{0}) = \|\mathbf{e}_i\| = 1.
+  \]
+  For $i \not = j$, we have
+  \begin{align*}
+    (\mathbf{a}_i, \mathbf{a}_j) &= -(\mathbf{a}_i, -\mathbf{a}_j) \\
+    &=-\frac{1}{2}(\|\mathbf{a}_i - \mathbf{a}_j\|^2 - \|\mathbf{a}_i\|^2 - \|\mathbf{a}_j\|^2)\\
+    &= -\frac{1}{2}(\|f(\mathbf{e}_i) - f(\mathbf{e}_j)\|^2 - 2)\\
+    &= -\frac{1}{2}(\|\mathbf{e}_i - \mathbf{e}_j\|^2 - 2)\\
+    &= 0
+  \end{align*}
+  So $\mathbf{a}_i$ and $\mathbf{a}_j$ are orthogonal. In other words, $\{\mathbf{a}_i\}$ forms an orthonormal set. It is an easy result that any orthogonal set must be linearly independent. Since we have found $n$ orthonormal vectors, they form an orthonormal basis.
+\end{frame}
+
+\begin{frame}{Proof}
+    Hence, the matrix $A$ with columns given by the column vectors $\mathbf{a}_i$ is an orthogonal matrix. We define a new isometry
+  \[
+    g(\mathbf{x}) = A\mathbf{x} + \mathbf{b}.
+  \]
+  We want to show $f = g$. By construction, we know $g(\mathbf{x}) = f(\mathbf{x})$ is true for $\mathbf{x} = \mathbf{0}, \mathbf{e}_1, \cdots, \mathbf{e}_n$.
+
+  We observe that $g$ is invertible. In particular,
+  \[
+    g^{-1}(\mathbf{x}) = A^{-1}(\mathbf{x} - \mathbf{b}) = A^T \mathbf{x} - A^T\mathbf{b}.
+  \]
+  Moreover, it is an isometry, since $A^T$ is orthogonal (or we can appeal to the more general fact that inverses of isometries are isometries).
+\end{frame}
+
+\begin{frame}{Proof}
+    We define
+  \[
+    h = g^{-1}\circ f.
+  \]
+  Since it is a composition of isometries, it is also an isometry. Moreover, it fixes $\mathbf{x} = \mathbf{0}, \mathbf{e}_1, \cdots, \mathbf{e}_n$.
+
+  It currently suffices to prove that $h$ is the identity.
+
+  Let $\mathbf{x} \in \R^n$, and expand it in the basis as
+  \[
+    \mathbf{x} = \sum_{i = 1}^n x_i \mathbf{e}_i.
+  \]
+  Let
+  \[
+    \mathbf{y} = h(\mathbf{x}) = \sum_{i = 1}^n y_i \mathbf{e}_i.
+  \]
+\end{frame}
+
+\begin{frame}{Proof}
+    We can compute
+  \begin{align*}
+    d(\mathbf{x}, \mathbf{e}_i)^2 &= (\mathbf{x} - \mathbf{e}_i, \mathbf{x} - \mathbf{e}_i) = \|\mathbf{x}\|^2 + 1 - 2 x_i\\
+    d(\mathbf{x}, \mathbf{0})^2 &= \|\mathbf{x}\|^2.
+  \end{align*}
+  Similarly, we have
+  \begin{align*}
+    d(\mathbf{y}, \mathbf{e}_i)^2 &= (\mathbf{y} - \mathbf{e}_i, \mathbf{y} - \mathbf{e}_i) = \|\mathbf{y}\|^2 + 1 - 2 y_i\\
+    d(\mathbf{y}, \mathbf{0})^2 &= \|\mathbf{y}\|^2.
+  \end{align*}
+  Since $h$ is an isometry and fixes $\mathbf{0}, \mathbf{e}_1, \cdots, \mathbf{e}_n$, and by definition $h(\mathbf{x}) = \mathbf{y}$, we must have
+  \[
+    d(\mathbf{x}, \mathbf{0}) = d(\mathbf{y}, \mathbf{0}), \quad d(\mathbf{x}, \mathbf{e}_i) = d(\mathbf{y}, \mathbf{e}_i).
+  \]
+  The first equality gives $\|\mathbf{x}\|^2 = \|\mathbf{y}\|^2$, and the others then imply $x_i = y_i$ for all $i$. In other words, $\mathbf{x} = \mathbf{y} = h(\mathbf{x})$. So $h$ is the identity.
+\end{frame}
+
+\subsection{A connection to Group Theory}
+
+\begin{frame}{Isometry group}
+    \begin{defi}[Isometry group]
+      The \emph{isometry group} $\Isom(\R^n)$ is the group of all isometries of $\R^n$, which is a group by composition.
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Special orthogonal group}
+    \begin{defi}[Special orthogonal group]
+      The \emph{special orthogonal group} is the group
+      \[
+        \SO(n) = \{A \in \Or(n):\det A = 1\}.
+      \]
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Orientation}
+    \begin{defi}[Orientation]
+      An \emph{orientation} of a vector space is an equivalence class of bases --- let $\mathbf{v}_1, \cdots, \mathbf{v}_n$ and $\mathbf{v}_1', \cdots, \mathbf{v}_n'$ be two bases and $A$ be the change of basis matrix. We say the two bases are equivalent iff $\det A > 0$. This is an equivalence relation on the bases, and the equivalence classes are the orientations.
+    \end{defi}
+
+    \begin{defi}[Orientation-preserving isometry]
+      An isometry $f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}$ is \emph{orientation-preserving} if $\det A = 1$. Otherwise, if $\det A = -1$, we say it is \emph{orientation-reversing}.
+    \end{defi}
+\end{frame}

@@ -1,0 +1,120 @@
+\section{Curves in $\R^n$}
+
+
+\subsection{Curve and The length of Curve}
+\begin{frame}{Curve}
+    \begin{defi}[Curve]
+      A \emph{curve} $\Gamma$ in $\R^n$ is a continuous map $\Gamma: [a, b] \to \R^n$.
+    \end{defi}
+\end{frame}
+
+\begin{frame}{Length of curve}
+    Considering a dissection $\mathcal{D} = a = t_0 < t_1 < \cdots < t_N = b$ of $[a, b]$, and set $P_i = \Gamma(t_i)$, and define
+    \[
+      \int_a^b \|\Gamma'(t)\|\;\d t,
+    \]
+    \begin{center}
+      \begin{tikzpicture}
+        \node [circ] (0) at (0, 0) {};
+        \node [circ] (1) at (0.5, 1) {};
+        \node [circ] (2) at (1.3, 0.9) {};
+        \node [circ] (3) at (1.6, 0.2) {};
+        \node [circ] (4) at (2.4, 0.2) {};
+        \node [circ] (5) at (3, 1.2) {};
+        \node [circ] (6) at (5, 0.5) {};
+    
+        \node [left] at (0) {$P_0$};
+        \node [left] at (1) {$P_1$};
+        \node [right] at (2) {$P_2$};
+        \node [above] at (5) {$P_{N - 1}$};
+        \node [right] at (6) {$P_N$};
+    
+        \draw plot [smooth, tension=0.6] coordinates {(0) (1) (1, 1.6) (2) (3) (2, -0.4) (4) (5) (6)};
+        \draw [mred] (0) -- (1) -- (2) -- (3);
+        \draw [mred, dotted] (3) -- (4);
+        \draw [mred] (4) -- (5) -- (6);
+      \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Length of curve}
+    \begin{defi}[Length of curve]
+      The length of a curve $\Gamma: [a, b] \to \R^n$ is
+      \[
+        \ell = \sup_{\mathcal{D}} S_{\mathcal{D}},
+      \]
+      if the supremum exists.
+    \end{defi}
+    Alternatively, if we let
+    \[
+      \mathrm{mesh}(\mathcal{D})= \max_i (t_i - t_{i - 1}),
+    \]
+    then if $\ell$ exists, then we have
+    \[
+      \ell = \lim_{\mathrm{mesh}(\mathcal{D}) \to 0} s_{\mathcal{D}}.
+    \]
+\end{frame}
+
+\subsection{The way to calculate length of curve}
+
+\begin{frame}{How to calculate length of curve?}
+    \begin{prop}
+      If $\Gamma$ is continuously differentiable (i.e.\ $C^1$), then the length of $\Gamma$ is given by
+      \[
+        \length(\Gamma) = \int_a^b \|\Gamma'(t)\|\;\d t.
+      \]
+    \end{prop}
+\end{frame}
+
+\begin{frame}{Proof}
+    To simplify notation, we assume $n = 3$. However, the proof works for all possible dimensions. We write
+      \[
+        \Gamma(t) = (f_1(t), f_2(t), f_3(t)).
+      \]
+      For every $s \not= t \in [a, b]$, the mean value theorem tells us
+      \[
+        \frac{f_i(t) - f_i(s)}{t - s} = f'_i (\xi_i)
+      \]
+      for some $\xi_i \in (s, t)$, for all $i = 1, 2, 3$.
+\end{frame}
+
+\begin{frame}{Proof}
+    Now note that $f_i'$ are continuous on a closed, bounded interval, and hence uniformly continuous. For all $\varepsilon \in 0$, there is some $\delta > 0$ such that $|t - s| < \delta$ implies
+          \[
+            |f_i'(\xi_i) - f'(\xi)| < \frac{\varepsilon}{3}
+          \]
+          for all $\xi \in (s, t)$. Thus, for any $\xi \in (s, t)$, we have
+          \[
+            \left\|\frac{\Gamma(t) - \Gamma(s)}{t - s} - \Gamma'(\xi)\right\| = \left\|\begin{pmatrix}f'_1(\xi_1)\\ f'_2(\xi_2)\\ f'_3(\xi_3)\end{pmatrix} - \begin{pmatrix}f'_1(\xi)\\ f'_2(\xi)\\ f'_3(\xi)\end{pmatrix}\right\| \leq \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+          \]
+          In other words,
+          \[
+            \|\Gamma(t) - \Gamma(s) - (t - s) \Gamma'(\xi)\| \leq \varepsilon(t - s).
+          \]
+          We relabel $t = t_i$, $s = t_{i - 1}$ and $\xi = \frac{s + t}{2}$.
+\end{frame}
+
+\begin{frame}{Proof}
+    Using the triangle inequality, we have
+  \begin{multline*}
+    (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| - \varepsilon(t_i - t_{i - 1}) < \|\Gamma(t_i) - \Gamma(t_{i - 1})\| \\
+    < (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| + \varepsilon(t_i - t_{i - 1}).
+  \end{multline*}
+  Summing over all $i$, we obtain
+  \begin{multline*}
+    \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| - \varepsilon(b - a) < S_{\mathcal{D}}\\
+    < \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| + \varepsilon(b - a),
+  \end{multline*}
+  which is valid whenever $\mathrm{mesh}(\mathcal{D}) < \delta$.
+\end{frame}
+
+\begin{frame}{Proof}
+    Since $\Gamma'$ is continuous, and hence integrable, we know
+  \[
+    \sum_i (t_i - t_{i - 1}) \left\|\Gamma'\left(\frac{t_i + t_{i - 1}}{2}\right)\right\| \to \int_a^b \|\Gamma'(t)\|\;\d t
+  \]
+  as $\mathrm{mesh}(\mathcal{D}) \to 0$, and
+  \[
+    \length(\Gamma) = \lim_{\mathrm{mesh}(\mathcal{D}) \to 0} S_\mathcal{D} = \int_a^b \|\Gamma'(t)\|\;\d t.\qedhere
+  \]
+\end{frame}

@@ -1,0 +1,371 @@
+\chapter{NHÓM VÀ ĐỒNG CẤU} 
+%\addcontentsline{toc}{chapter}{Chương 0. Kiến thức chuẩn bị}
+
+Trong chương này, chúng tôi trình bày một số kiến thức cơ bản về lý thuyết nhóm bao gồm các định nghĩa cơ sở về nhóm và đồng cấu.
+
+\section{Nhóm}
+
+\begin{defi}[Toán tử hai ngôi]
+  % A \emph{(binary) operation} is a way of combining two elements to get a new element. Formally, it is a map $*: A \times A \rightarrow A$.
+  Một \emph{toán tử (hai ngôi)} là một cách kết hợp hai phần tử để tạo ra một phần tử mới. Một cách hình thức, nó là một ánh xạ $*: A \times A \rightarrow A$.
+\end{defi}
+
+\begin{defi}[Nhóm]
+  % A \emph{group} is a set $G$ with a binary operation $*$ satisfying the following axioms:
+  Một \emph{nhóm} là một tập hợp $G$ với một toán tử hai ngôi $*$ thỏa mãn những tiên đề sau đây:
+  \begin{enumerate}[label=\arabic{*}.]
+    \item Tồn tại một số $e \in G$ mà với mọi $a$, ta có:
+      \[
+        a*e = e*a = a.\tag{đơn vị - identity}
+      \]
+    \item Với mọi $a \in G$, tồn tại một số $a^{-1} \in G$ sao cho
+      \[
+        a*a^{-1} = a^{-1}*a = e.\tag{nghịch đảo - inverse}
+      \]
+    \item Với mọi $a, b, c\in G$, ta có:
+      \[
+        (a*b)*c = a*(b*c).\tag{kết hợp - associativity}
+      \]
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}[Bậc của nhóm]
+  \emph{Bậc của nhóm}, ký hiệu $|G|$, là số lượng phần tử của nhóm $G$. Một nhóm được gọi là một nhóm hữu hạn nếu bậc của nó là hữu hạn.
+\end{defi}
+
+% Note that \emph{technically}, the inverse axiom makes no sense, since we have not specified what $e$ is. Even if we take it to be the $e$ given by the identity axiom, the identity axiom only states there is \emph{some} $e$ that satisfies that property, but there could be many! We don't know which one $a * a^{-1}$ is supposed to be equal to! So we should technically take that to mean there is some $a^{-1}$ such that $a*a^{-1}$ and $a^{-1} * a$ satisfy the identity axiom. Of course, we will soon show that identities are indeed unique, and we will happily talk about ``the'' identity.
+Lưu ý rằng \emph{về mặt kỹ thuật}, tiên đề nghịch đảo này không có ý nghĩa gì vì chúng ta chưa chỉ rõ $e$ là gì. Ngay cả khi chúng ta coi nó là $e$ do tiên đề đơn vị đưa ra, tiên đề đơn vị chỉ cho biết có \emph{một số} $e$ thỏa mãn tính chất đó, nhưng có thể có nhiều! Chúng tôi không biết $a * a^{-1}$ nào được cho là bằng với! Vì vậy, về mặt kỹ thuật, chúng ta nên hiểu điều đó có nghĩa là có một số $a^{-1}$ sao cho $a*a^{-1}$ và $a^{-1} * a$ thỏa mãn tiên đề đơn vị. Tất nhiên, chúng ta sẽ sớm chứng tỏ rằng các phần tử đơn vị là duy nhất!.
+
+Một số người đặt một tiên đề số 0 gọi là "đóng" (closure)
+\begin{enumerate}[label=\arabic{*}.]
+    \setcounter{enumi}{-1}
+    \item Với mọi $a, b \in G$, ta có $a * b \in G$.\hfill (đóng - closure)
+\end{enumerate}
+Về mặt kỹ thuật, tiên đề này cũng vô nghĩa --- khi chúng ta nói $*$ là một phép toán hai ngôi, theo định nghĩa, $a * b$ \emph{phải} là phần tử của $G$. Tuy nhiên, trong thực tế, chúng ta thường phải kiểm tra xem tiên đề này có thực sự đúng hay không. Ví dụ: nếu chúng ta đặt $G$ là tập hợp tất cả các ma trận có dạng
+\[
+  \begin{pmatrix}
+    1 & x & y\\
+    0 & 1 & z\\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+dưới phép nhân ma trận, chúng ta sẽ phải kiểm tra xem tích của hai ma trận như vậy có thực sự là ma trận có dạng này hay không. Về mặt chính thức, chúng ta đang kiểm tra xem phép toán hai ngôi có phải là phép toán được xác định rõ ràng trên $G$ hay không.
+
+Điều quan trọng cần biết là về mặt tổng quát \emph{không phải lúc nào} $a*b = b*a$ cũng đúng. Không có lý do \emph{ưu tiên} nào giải thích tại sao điều này cần phải đúng. Ví dụ, nếu chúng ta đang xem xét sự đối xứng của một tam giác, việc quay rồi phản xạ sẽ khác với việc phản xạ rồi quay.
+
+Tuy nhiên, đối với một số nhóm, điều này lại đúng. Chúng ta gọi những nhóm như vậy là các \emph{nhóm abelian} hay \emph{abelian group}.
+\begin{defi}[Nhóm Abelian]
+  Một nhóm là \emph{abelian} nếu nó thỏa mãn
+  \begin{enumerate}[label=\arabic{*}.]
+      \setcounter{enumi}{3}
+    \item $(\forall a, b \in G)\, a*b = b*a$. \hfill (giao hoán - commutativity)
+  \end{enumerate}
+\end{defi}
+
+Nếu nó quá rõ ràng, chúng ta có thể lược giản toán tử $*$, và viết $a*b$ như $ab$. Ta cũng viết $a^2 = aa$, $a^n = \underbrace{aaa\cdots a}_{n \text{ lần}}$, $a^0 = e$, $a^{-n} = (a^{-1})^n$
+\begin{eg}
+  Những nhóm sau đây là các nhóm abelian:
+  \begin{enumerate}
+    \item $\Z$ với $+$
+    \item $\Q$ với $+$
+    \item $\Z_n$ (các số nguyên modulo $n$) với $+_n$
+    \item $\Q^*$ với $\times$
+    \item $\{-1, 1\}$ với $\times$
+  \end{enumerate}
+  Những nhóm sau đây không là nhóm abelian
+  \begin{enumerate}[resume]
+    \item Sự đối xứng của một tam giác đều (hay bất kỳ một đa giác $n$ đỉnh nào) với toán tử kết hợp ($D_{2n}$)
+    \item Các ma trận khả nghịch $2\times 2$ với phép nhân ma trận ($\GL_2(\R)$)
+    \item Các nhóm đối xứng của các đối tượng 3D.
+  \end{enumerate}
+\end{eg}
+
+Hãy nhớ lại rằng tiên đề nhóm đầu tiên yêu cầu phải tồn tại \emph{một} phần tử đơn vị mà chúng ta sẽ gọi là $e$. Sau đó, tiên đề thứ hai yêu cầu rằng với mỗi $a$, có một $a^{-1}$ nghịch đảo sao cho $a^{-1}a = e$. Điều này chỉ có ý nghĩa nếu chỉ có một phần tử $e$, nếu không thì $a^{-1}a$ sẽ bằng với phần tử đơn vị nào?
+
+Bây giờ chúng ta sẽ chứng minh rằng chỉ có thể có một phần tử đơn vị. Hoá ra các nghịch đảo cũng là duy nhất. Vì vậy, chúng ta sẽ nói về phần tử \emph{đơn vị} và phần tử \emph{nghịch đảo}.
+\begin{prop}
+  Gọi $(G, *)$ là một nhóm. Thì
+  \begin{enumerate}[label=(\roman{*})]
+    \item Phần tử đơn vị là duy nhất.
+    \item Phần tử nghịch đảo là duy nhất.
+  \end{enumerate}
+\end{prop}
+\begin{proof}\leavevmode
+  \begin{enumerate}[label=(\roman{*})]
+    \item Giả sử $e$ và $e'$ là hai phần tử đơn vị. Khi đó chúng ta có $ee' = e'$, coi $e$ là nghịch đảo, và $ee' = e$, coi $e'$ là nghịch đảo. Do đó $e = e'$.
+    \item Giả sử $a^{-1}$ và $b$ đều thỏa mãn tiên đề nghịch đảo cho một số $a\in G$. Khi đó $b = be = b(aa^{-1}) = (ba)a^{-1} = ea^{-1} = a^{-1}$. Do đó $b = a^{-1}$.\qedhere
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+\begin{prop}
+  Gọi $(G, *)$ là một nhóm và $a, b\in G$. Thì
+  \begin{enumerate}
+    \item $(a^{-1})^{-1} = a$
+    \item $(ab)^{-1} = b^{-1}a^{-1}$
+  \end{enumerate}
+\end{prop}
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Cho $a^{-1}$, cả $a$ và $(a^{-1})^{-1}$ đều thỏa mãn
+      \[
+        xa^{-1} = a^{-1}x = e.
+      \]
+      Bởi tính duy nhất của nghịch đảo, $(a^{-1})^{-1} = a$.
+    \item Ta có:
+      \begin{align*}
+        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} \\
+        &= aea^{-1}\\
+        &= aa^{-1}\\
+        &= e
+      \end{align*}
+      Tương tự, $(b^{-1}a^{-1})ab = e$. Vì thế $b^{-1}a^{-1}$ là một nghịch đảo của $ab$. Bởi tính duy nhất của nghịch đảo, $(ab)^{-1} = b^{-1}a^{-1}$.\qedhere
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+
+Đôi khi nếu chúng ta có một nhóm $G$, chúng ta có thể muốn loại bỏ một số phần tử. Ví dụ: nếu $G$ là nhóm gồm tất cả các đối xứng của một tam giác, trong một trường hợp nào đó chúng ta có thể quyết định rằng chúng ta không cần sự phản xạ (reflection) bởi vì chúng có hướng ngược chiều nhau. Vì vậy, chúng ta chỉ chọn các phép quay trong $G$ và tạo thành một nhóm mới nhỏ hơn. Chúng tôi gọi đây là \emph{nhóm con (subgroup)} của $G$.
+
+\begin{defi}[Nhóm con]
+  Gọi $H$ là một \emph{nhóm con} của $G$, ký hiệu $H\leq G$, nếu $H\subseteq G$ và $H$ với toán tử hạn chế $*$ từ $G$ cũng là một nhóm.
+\end{defi}
+\begin{eg}\leavevmode
+  \begin{itemize}
+    \item $(\Z, +)\leq (\Q, +) \leq (\R, +)\leq (\C, +)$
+    \item $({e}, *) \leq (G, *)$ (nhóm con tầm thường)
+    \item $G \leq G$
+    \item $(\{\pm 1\}, \times) \leq (\Q^*, \times)$
+  \end{itemize}
+\end{eg}
+
+Theo định nghĩa, để chứng minh $H$ là nhóm con của $G$, chúng ta cần đảm bảo $H$ thỏa mãn mọi tiên đề nhóm. Tuy nhiên, theo cách này, việc trình bày rất dài và phức tạp. Thay vào đó, chúng ta đề ra có một số tiêu chí đơn giản hóa để quyết định xem $H$ có phải là nhóm con hay không.
+\begin{lemma}[Tiêu chí nhóm con I]
+  Gọi $(G, *)$ là một nhóm và $H\subseteq G$. $H \leq G$ nếu và chỉ nếu
+  \begin{enumerate}
+    \item $e \in H$
+    \item $(\forall a, b\in H)\,ab \in H$
+    \item $(\forall a \in H)\,a^{-1} \in H$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Các tiên đề nhóm được thỏa mãn như sau:
+  \begin{enumerate}[label=\arabic{*}.]
+      \setcounter{enumi}{-1}
+    \item Tiên đề đóng (Closure): (ii)
+    \item Tiên đề đơn vị (Identity): (i). Lưu ý rằng $H$ và $G$ phải có cùng một phần tử đơn vị. Giả sử rằng $e_H$ và $e_G$ lần lượt là phần tử đơn vị của $H$ và $G$. Khi đó $e_He_H = e_H$. Bây giờ $e_H$ có nghịch đảo của $G$. Vì vậy chúng ta có $e_He_He_H^{-1} = e_He_H^{-1}$. Vậy $e_He_G = e_G$. Do đó $e_H = e_G$.
+    \item Tiên đề nghịch đảo (Inverse): (iii)
+    \item Tiên đề kết hợp (Associativity): suy ra từ $G$.\qedhere
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+Tuy nhiên, với Bổ đề trên việc kiểm tra còn tương đối phức tạp. Chúng ta thường sử dụng Bổ đề dưới đây.
+
+\begin{lemma}[Tiêu chí nhóm con II]
+  Một tập hợp con $H\subseteq G$ là một nhóm con của $G$ nếu và chỉ nếu:
+  \begin{enumerate}[label=(\Roman{*})]
+    \item $H$ khác rỗng
+    \item $(\forall a, b\in H)\,ab^{-1}\in H$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  (I) và (II) suy ra theo một cách theo sau một cách tầm thường từ (i), (ii) và (iii).
+
+  Để chứng minh rằng (I) và (II) suy ra (i), (ii) và (iii), ta có
+  \begin{enumerate}
+    \item $H$ phải chứa ít nhất một phần tử $a$. Thì $aa^{-1} = e \in H$.
+      \setcounter{enumi}{2}
+    \item $ea^{-1} = a^{-1} \in H$.
+      \setcounter{enumi}{1}
+    \item $a(b^{-1})^{-1} = ab\in H$.
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+\begin{prop}
+  Các nhóm con của $(\Z, +)$ chính xác là $n\Z$, với $n\in \N$ ($n\Z$ là bội số nguyên của $n$).
+\end{prop}
+\begin{proof}
+  Đầu tiên, rất tầm thường khi chứng minh rằng với bất kỳ $n \in \N$, $n\Z$ là một nhóm con. Chúng ta cần chứng minh rằng bất kỳ nhóm con nào phải có dạng $n\Z$.
+
+  Đặt $H\leq \Z$. Chúng tôi biết $0\in H$. Nếu không có phần tử nào khác trong $H$ thì $H = 0\Z$. Ngược lại, chọn số nguyên dương nhỏ nhất $n$ trong $H$. Khi đó $H=n\Z$.
+
+  Ngược lại, giả sử $(\exists a\in H)\,n \nmid a$. Cho $a = pn + q$, trong đó $0 < q < n$. Vì $a - pn\in H$, $q\in H$. Tuy nhiên $q < n$ nhưng $n$ là thành viên nhỏ nhất của $H$. Dẫn đến mâu thuẫn. Vậy mọi $a\in H$ đều chia hết cho $n$. Ngoài ra, với tính đóng, tất cả bội số của $n$ phải ở trong $H$. Vậy $H = n\Z$.
+  Chứng minh hoàn tất.
+\end{proof}
+
+\section{Đồng cấu}
+
+Việc nghiên cứu các hàm giữa các nhóm khác nhau thường rất hữu ích. Đầu tiên chúng ta cần định nghĩa hàm là gì. Những định nghĩa này quen thuộc với phần \emph{lý thuyết số và tập hợp}.
+
+\begin{defi}[Hàm (ánh xạ)]
+  Cho hai tập hợp $X$, $Y$, một \emph{hàm (function)} $f: X \rightarrow Y$ ánh xạ mỗi $x\in X$ tới một $f(x)\in Y$ cụ thể. $X$ được gọi là miền (domain) và $Y$ là đồng miền (co-domain).
+\end{defi}
+\begin{eg}\leavevmode
+  \begin{itemize}
+    \item Identity function: for any set $X$, $1_X: X \rightarrow X$ with $1_X(x) = x$ is a function. This is also written as $\mathrm{id}_X$.
+    \item Inclusion map: $\iota: \Z \rightarrow \Q$: $\iota(n) = n$. Note that this differs from the identity function as the domain and codomain are different in the inclusion map.
+    \item $f_1: \Z \rightarrow \Z$: $f_1(x) = x + 1$.
+    \item $f_2: \Z \rightarrow \Z$: $f_2(x) = 2x$.
+    \item $f_3: \Z \rightarrow \Z$: $f_3(x) = x^2$.
+    \item For $g: \{0, 1, 2, 3, 4\} \rightarrow \{0, 1, 2, 3, 4\}$, we have:
+      \begin{itemize}
+        \item $g_1(x) = x + 1$ if $x < 4$; $g_1(4) = 4$.
+        \item $g_2(x) = x + 1$ if $x < 4$; $g_1(4) = 0$.
+      \end{itemize}
+  \end{itemize}
+\end{eg}
+\begin{defi}[Hàm hợp]
+  \emph{Hợp (composition)} của hai hàm là hàm mà ta nhận được bằng cách áp dụng lần lượt từng hàm sau những hàm khác. Cụ thể, nếu $f: X \rightarrow Y$ và $G: Y\rightarrow Z$, thì $g\circ f: X \rightarrow Z$ với $g\circ f(x) = g(f(x) )$.
+\end{defi}
+\begin{eg}
+  $f_2\circ f_1(x) = 2x + 2$. $f_1\circ f_2 (x) = 2x + 1$. Lưu ý rằng hàm hợp không có tính giao hoán.
+\end{eg}
+\begin{defi}[Đơn ánh]
+  Một hàm (ánh xạ) gọi là đơn ánh (injective functions) nếu nó ánh xạ mọi thứ nhiều nhất một lần, tức là:
+  \[
+    (\forall x, y\in X)\,f(x) = f(y)\Rightarrow x = y.
+  \]
+\end{defi}
+
+\begin{defi}[Toàn ánh]
+  Một hàm (ánh xạ) gọi là toàn ánh (surjective functions) nếu nó ánh xạ mọi thứ ít nhất một lần, tức là:
+  \[
+    (\forall y\in Y)(\exists x\in X)\,f(x) = y.
+  \]
+\end{defi}
+
+\begin{defi}[Song ánh]
+  Một hàm (ánh xạ) là song ánh (bijective) nếu nó vừa là đơn ánh vừa là toàn ánh, tức là nó biến mọi thứ về chính xác một giá trị. Lưu ý: một ánh xạ có một ánh xạ ngược nếu và chỉ nếu nó là song ánh.
+\end{defi}
+
+% \begin{eg}
+
+%   $\iota$ và $f_2$ là đơn ánh nhưng không là toàn ánh. $f_3$ và $g_1$ đều không. $1_X$, $f_1$ và $g_2$ là song ánh.
+% \end{eg}
+
+\begin{lemma}
+  Hợp của hai song ánh là song ánh.
+\end{lemma}
+
+Khi xem xét các tập hợp, các hàm được phép thực hiện tất cả các loại toán tử từ phức tạp đến đơn giản và có thể ánh xạ bất kỳ phần tử nào đến bất kỳ phần tử nào mà không có bất kỳ hạn chế nào. Tuy nhiên, chúng ta hiện đang nghiên cứu các nhóm và các nhóm có cấu trúc bổ sung bên trên tập hợp các phần tử. Do đó chúng ta không quan tâm đến các hàm tùy ý. Thay vào đó, chúng ta quan tâm đến các ánh xạ "giữ được" cấu trúc nhóm. Chúng ta gọi đây là \emph{đồng hình (đồng cấu)}.
+\begin{defi}[Đồng cấu nhóm]
+  Đặt $(G, *)$ và $(H, \times)$ là các nhóm. Ánh xạ $f:G\rightarrow H$ là một \emph{đồng cấu nhóm} nếu và chỉ nếu
+  \[
+   ( \forall g_1, g_2 \in G)\, f(g_1)\times f(g_2) = f(g_1 * g_2),
+  \]
+\end{defi}
+
+\begin{defi}[Đẳng cấu nhóm]
+  \emph{Đẳng cấu} là các song ánh đồng cấu. Hai nhóm được gọi là \emph{đẳng cấu} nếu tồn tại sự đẳng cấu giữa chúng. Chúng ta viết $G\cong H$.
+\end{defi}
+Chúng ta sẽ coi hai nhóm đẳng cấu là "giống nhau". Ví dụ, khi chúng ta nói rằng chỉ có một nhóm bậc $2$, điều đó có nghĩa là bất kỳ hai nhóm bậc $2$ nào đều phải đẳng cấu.
+
+\begin{eg}\leavevmode
+  \begin{itemize}
+    \item $f: G \to H$ được định nghĩa bởi $f(g) = e$, trong đó $e$ là phần tử đơn vị của $H$, là một đồng cấu.
+    \item $1_G: G \rightarrow G$ và $f_2: \Z \rightarrow 2\Z$ là đẳng cấu. $\iota: \Z\rightarrow\Q$ và $f_2:\Z\rightarrow\Z$ là đồng cấu.
+    \item $\mathrm{exp}: (\R, +) \rightarrow (\R^+, \times)$ với $\mathrm{exp}(x) = e^x$ là đẳng cấu.
+    \item Lấy $(\Z_4, +)$ và $H: (\{e^{ik\pi/2}:k=0, 1 ,2, 3\}, \times)$. Thì $f: \Z_4 \rightarrow H$ by $f(a) = e^{i\pi a/2}$ là một đẳng cấu.
+    \item $f: \GL_2(\R) \rightarrow \R^*$ với $f(A) = \det(A)$ là một đồng cấu, trong đó $\GL_2(\R)$ là tập các ma trận khả nghịch $2\times 2$.
+  \end{itemize}
+\end{eg}
+
+\begin{prop}
+  Giả định rằng $f: G\rightarrow H$ là một đồng cấu. Thì
+  \begin{enumerate}
+    \item Đồng cấu ánh xác phần tử đơn vị thành phần tử đơn vị, tức là
+      \[
+        f(e_G) = e_H
+      \]
+    \item Đồng cấu ánh xạ phần tử nghịch đảo thành phần tử nghịch đảo, tức là
+      \[
+        f(a^{-1}) = f(a)^{-1}
+      \]
+    \item Tổ hợp của 2 phép đồng cấu nhóm là phép đồng cấu nhóm.
+    \item Nghịch đảo của một đẳng cấu là một đẳng cấu.
+  \end{enumerate}
+\end{prop}
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item \begin{align*}
+        f(e_G) &= f(e_G^2) = f(e_G)^2\\
+        f(e_G)^{-1}f(e_G) &= f(e_G)^{-1}f(e_G)^2\\
+        f(e_G) &= e_H
+      \end{align*}
+    \item \begin{align*}
+        e_H &= f(e_G)\\
+        &= f(aa^{-1})\\
+        &= f(a)f(a^{-1})
+      \end{align*}
+      Bởi vì nghịch đảo là duy nhất, nên $f(a^{-1}) = f(a)^{-1}$.
+    \item Gọi $f:G_1 \rightarrow G_2$ và $g:G_2 \rightarrow G_3$. Thì $g(f(ab)) = g(f(a)f(b)) = g(f(a))g(f(b))$.
+    \item Let $f:G \rightarrow H$ là một đẳng cấu. Thì
+      \begin{align*}
+        f^{-1}(ab) &= f^{-1}\Big\{f\big[f^{-1}(a)\big]f\big[f^{-1}(b)\big]\Big\}\\
+        &= f^{-1}\Big\{f\big[f^{-1}(a)f^{-1}(b)\big]\Big\}\\
+        &= f^{-1}(a)f^{-1}(b)
+      \end{align*}
+      Vì $f^{-1}$ là một đồng cấu. Và vì nó là song ánh, nên $f^{-1}$ là một đẳng cấu.\qedhere
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+
+\begin{defi}[Ảnh của đồng cấu]
+  Nếu $f:G\rightarrow H$ là đồng cấu thì \emph{ảnh} của $f$ là
+  \[
+    \im f = f(G) = \{f(g):g\in G\}.
+  \]
+\end{defi}
+
+\begin{defi}[Nhân của đồng cấu]
+  \emph{Nhân} của $f$, được viết là
+  \[
+    \ker f = f^{-1}(\{e_H\}) = \{g\in G:f(g)=e_H\}.
+  \]
+\end{defi}
+
+\begin{prop}
+  Cả ảnh và nhân đều là nhóm con của các nhóm tương ứng, tức là\ $\im f\leq H$ và $\ker f \leq G$.
+\end{prop}
+
+\begin{proof}
+  Vì $e_H\in \im f$ và $e_G\in \ker f$, $\im f$ và $\ker f$ khác rỗng. Hơn nữa, giả định rằng $b_1, b_2\in \im f$. Bây giờ $\exists a_1, a_2 \in G$ mà $f(a_i) = b_i$. Thì $b_1b_2^{-1} = f(a_1)f(a_2^{-1}) = f(a_1a_2^{-1})\in \im f$.
+
+  Xem xét $b_1,b_2\in \ker f$. Ta có $f(b_1b_2^{-1}) = f(b_1)f(b_2)^{-1} = e^2 = e$. Nên $b_1b_2^{-1}\in \ker f$.
+  Chứng minh hoàn tất.
+\end{proof}
+
+\begin{prop}
+  Với mọi đồng cấu cho trước $f:G\rightarrow H$ và bất kỳ $a\in G$, với mọi $k\in \ker f$, $aka^{-1}\in\ker f$.
+\end{prop}
+Mệnh đề này có vẻ khá vô nghĩa. Tuy nhiên, không phải vậy. Tất cả các nhóm con thỏa mãn đặc tính này được gọi là \emph{nhóm con chuẩn}, và các nhóm con chuẩn tắc có những thuộc tính rất quan trọng.
+
+\begin{proof}
+  $f(aka^{-1}) = f(a)f(k)f(a)^{-1} = f(a)ef(a)^{-1} = e$. So $aka^{-1}\in \ker f$. Chứng minh hoàn tất.
+\end{proof}
+
+\begin{eg}
+  Ảnh và nhân cho các hàm được xác định trước đó:
+  \begin{enumerate}
+    \item Với các hàm mà ánh xạ mọi thứ về $e$, $\im f = \{e\}$ và $\ker f = G$.
+    \item Với các ánh xạ đơn vị, $\im 1_G = G$ và $\ker 1_G = \{e\}$.
+    \item Với các ánh xạ $\iota: \Z\rightarrow\Q$, ta có $\im \iota = \Z$ và $\ker \iota = \{0\}$
+    \item Với $f_2:\Z\rightarrow\Z$ và $f_2(x) = 2x$, ta có $\im f_2 = 2\Z$ và $\ker f_2 = \{0\}$.
+    \item Với $\det: \GL_2(\R) \rightarrow \R^*$, ta có $\im \det = \R^*$ và $\ker \det = \{A:\det A = 1\} = \mathrm{SL}_2(\R)$
+  \end{enumerate}
+\end{eg}
+\begin{prop}
+  Với mọi đồng cấu $f:G\rightarrow H$, $f$ là
+  \begin{enumerate}
+    \item toàn ánh nếu và chỉ nếu $\im f = H$
+    \item đơn ánh nếu và chỉ nếu $\ker f = \{e\}$
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Bởi định nghĩa.
+    \item Ta đã biết $f(e) = e$. Nên nếu $f$ là đơn ánh, thì bởi định nghĩa $\ker f = \{e\}$. Nếu $\ker f = \{e\}$, thì cho trước $a, b$ mà $f(a) = f(b)$, $f(ab^{-1}) = f(a)f(b)^{-1} = e$. Do đó $ab^{-1}\in \ker f = \{e\}$. Thì $ab^{-1} = e$ và $a = b$.\qedhere
+  \end{enumerate}
+  Chứng minh hoàn tất.
+\end{proof}
+
+Cho đến đây, các định nghĩa về ảnh và nhân dường như chỉ là thuật ngữ thuận tiện để đề cập đến sự vật. Tuy nhiên, sau này chúng ta sẽ chứng minh một định lý quan trọng, \emph{định lý đẳng cấu thứ nhất (first isomorphism theorem)}, liên hệ hai đối tượng này và cung cấp những hiểu biết sâu sắc (hy vọng vậy).
