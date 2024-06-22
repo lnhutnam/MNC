@@ -1,0 +1,179 @@
+\chapter{CHẶN SAI SỐ TOÀN CỤC CHO MỘT HỆ BẤT PHƯƠNG TRÌNH LỒI}
+
+Trong chương này, chúng tôi trình bày một số điều kiện cần và đủ cho sự tồn tại của chặn sai số toàn cục của một hệ bất phương trình lồi. 
+
+Ta gọi $f: X \rightarrow \mathbb{R} \cup \{+\infty\}$ là một hàm lồi. Xem xét bất đẳng thức
+\begin{equation}
+    \label{eq:convex_inequality}
+    f(x) \leq 0
+\end{equation}
+
+Ta đặt $S$ là tập nghiệm của \eqref{eq:convex_inequality}, là:
+\begin{equation}
+    S := \{x \in X \mid f(x) \leq 0\}
+\end{equation}
+
+Trước tiên, ta định nghĩa về sự tồn tại của một chặn sai số toàn cục cho bài toán bất phương trình lồi như sau:
+\begin{defi}
+    Bất phương trình lồi \eqref{eq:convex_inequality} được gọi là có một chặn sai số toàn cục nếu tồn tại một số thực $\tau > 0$ mà:
+    \begin{equation}
+        d(x, S) \leq \tau f_{+}(x) \quad\text{với mọi}\quad x \in X
+    \end{equation}
+\end{defi}
+trong đó $f_{+}(x) := \max{f(x), 0}$.
+
+Chúng ta giả định rằng các tập nghiệm thì khác rỗng và không tương đương đến toàn bộ không gian $X$. Lưu ý rằng $\text{bd} S \ne \varnothing$ bởi vì $S \ne X$. Hơn nữa, bởi vì $f$ không được giả định rằng nó nửa liên tục dưới, nên giá trị của hàm này có âm, dương, hoặc vô hạn tại một điểm trong $\text{bd} S$ và nghiệm $S$ có thể không đóng.
+
+Một bổ đề quan trọng cho việc xây dựng chặn sai số toàn cục cho bất phương trình lồi mà không cần giả sử về nửa liên tục dưới như sau:
+\begin{lemma}
+    Với $\overline{x} \in \text{dom} f$, ta có:
+    \begin{enumerate}[label=(\roman*)]
+        \item Nếu $f(\overline{x}) = 0$ thì $\partial f_{+}(\overline{x}) = [0, 1]\partial f(\overline{x}) + \partial^{\infty} f(\overline{x})$.
+        \item Nếu $f(\overline{x}) < 0$ thì $\partial f_{+}(\overline{x}) = \partial \delta_{\text{dom}f}(\overline{x})$
+    \end{enumerate}
+\end{lemma}
+
+\section{Điều kiện cần cho sự tồn tại chặn sai số toàn cục}
+
+Một điều kiện cần cho sự tồn tại của chặn sai số toàn cục cho bất phương trình lồi \eqref{eq:convex_inequality} được phát biểu như sau:
+\begin{prop}
+    \label{prop:necessary_criterion}
+    Nếu bất phương trình lồi \eqref{eq:convex_inequality} có một chặn sai số toàn cục thì tồn tại $\tau > 0$ sao cho với mọi $y \in \text{bd} S \cap S$, điều kiện sau phải được thỏa mãn:
+    \begin{equation}
+        \label{eq:necessary_condition}
+        N_S(y) \cap \mathbb{S}^{*} \subseteq A := \begin{cases}
+            (0, \tau]\partial f(y)\quad\text{nếu } f(y)= 0 \text{ và } \partial f(y) \ne \varnothing, \\
+            \partial^{\infty}f(y)\quad\text{khác.}
+        \end{cases}
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+Bởi vì tập hợp $\text{bd} S \cap S$ có khả năng rỗng, điều kiện cần \eqref{eq:necessary_condition} là chưa đủ. Tuy nhiên, trong trường hợp phần giao này khác rỗng, chúng ta sẽ không biết rằng liệu điều kiện \eqref{eq:necessary_condition} là đủ chưa. Tất nhiên, một điều kiện cần và đủ rõ ràng là điều đủ yếu (weakest sufficient condition).
+
+\section{Điều kiện đủ cho sự tồn tại chặn sai số toàn cục}
+
+Trong phần này, ta xem xét điều kiện đủ cho chặn sai số toàn cục của bất phương trình lồi \eqref{eq:convex_inequality}. Từ đó, ta phân tích sự khác nhau giữa nó và điều kiện cần \eqref{eq:necessary_condition}.
+
+\begin{theorem}
+    \label{theorem:sufficient_criterion}
+    Xem xét bất phương trình lồi \eqref{eq:convex_inequality}. Giả định rằng tồn tại $\tau > 0$ sao cho với mọi $y \in \text{bd}S$, điều kiện sau hoàn toàn được thỏa:
+    \begin{equation}
+        \label{eq:sufficient_condition}
+        N_S(y) \cap \mathbb{S}^* \subseteq A := \begin{cases}
+            (0, \tau]\partial f(y) \quad\text{if } 0 \leq f(y) < + \infty \quad\text{và } \partial f(y) \ne 0,\\
+            \partial\delta_{\overline{\text{dom}f}}(y) \quad\text{nếu } f(y) = +\infty,\\
+            \partial^{\infty}f(y)\quad\text{khác}.
+        \end{cases}
+    \end{equation}
+    Thì bất phương trình lồi \eqref{eq:convex_inequality} có một chặn sai số toàn cục.
+\end{theorem}
+
+\begin{remark}
+    Ta nhấn mạnh rằng Định lý \ref{theorem:sufficient_criterion} có thể không cần thiết cho sự tồn tại của một bất phương trình lồi. Ta xem xét ví dụ về nó ở Ví dụ.
+\end{remark}
+
+\begin{remark}
+    Quan sát thấy rằng trong nhiều đóng góp cho lý thuyết giới hạn sai số toàn cục/cục bộ của hàm lồi, giả định nửa liên tục dưới hoặc một số điều kiện trên tập nghiệm, chẳng hạn như tính đóng, giới hạn, v.v., đã được áp đặt. Khi cả $f$ và $f_{+}$ không nửa liên tục dưới và tập nghiệm là không đóng và không bị chặn như trong các ví dụ sau, chúng ta có thể sử dụng Mệnh đề \ref{prop:necessary_criterion} và Định lý \ref{theorem:sufficient_criterion} để xác định sự không tồn tại hay tồn tại của giới hạn lỗi toàn cục.
+\end{remark}
+
+\section{Một số ví dụ}
+
+\begin{eg}
+    Cho hàm $f: \R^3 \rightarrow \R \cup \{+\infty\}$ được định nghĩa bởi
+    \begin{equation}
+        f(x_1, x_2, x_3) := \begin{cases}
+            x_1^2 + 3_x1 + e^{-x_3} - 1 \quad\text{nếu } (x_1,x_2,x_3) \in (0, 1] \times [-1, 2] \times [-1, 0], \\
+            0, \quad\text{nếu } (x_1,x_2,x_3) \in \{0\} \times (-1, 0] \times \{0\},
+            +\infty\quad\text{khác}.
+        \end{cases}
+    \end{equation}
+\end{eg}
+
+\begin{eg}
+    Đặt $X = l^2$, không gian của các dãy tổng bình phương của các số thực, và gọi $f: X \rightarrow \R \cup \{=\infty\}$ được cho bởi
+    \begin{equation}
+        f(x) := \begin{cases}
+            \sum_{i=1}^{\infty}x^i\quad\text{nếu } x^i < 0, \forall i \in \N \text{và }x^i \ne 0 \text{ với hầu khắp hữu hạn } i,\\
+            1 \quad\text{nếu } x = (0, \dots),\\
+            +\infty\quad\text{khác}.
+        \end{cases}
+    \end{equation}
+\end{eg}
+
+\section{Với giả định tính đóng}
+
+Dưới giả định $S$ đóng, sự tồn tại của chặn sai số toàn cục cho bất phương trình lồi \eqref{eq:convex_inequality} có thể được mô tả bằng nón chuẩn và dưới vi phân như sau:
+
+\begin{coro}
+    \label{coro:closed}
+    Với bất phương trình lồi \eqref{eq:convex_inequality}, giả định rằng $S$ đóng. Thì bất phương trình lồi \eqref{eq:convex_inequality} có một chặn sai số toàn cục nếu và chỉ nếu tồn tại $\tau > 0$ sao cho với mọi $x \in \text{bd}S$, điều kiện sau được thỏa mãn:
+    \begin{equation}
+        N_S(x) \cap \mathbb{S}^* \subseteq A := \begin{cases}
+            (0, \tau]\partial f(x)\quad\text{nếu } f(x) = 0 \text{ và } \partial f(x) \ne \varnothing,\\
+            \partial^{\infty}f(y)\quad\text{khác.}
+        \end{cases}
+    \end{equation}
+\end{coro}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+\begin{remark}
+    Hệ quả \ref{coro:closed} tương đương với Định lý 3.2 trong [22], một mô tả về chặn sai số toàn cục trong thuật ngữ weak basic constraint qualification và "end set" của dưới vi phân.
+\end{remark}
+
+Trong thực hành, có thể không cần phải xác minh điều kiện cần và đủ.
+
+\section{Nghiên cứu trong hữu hạn chiều}
+
+Trong phần này, chúng tôi trình bày các trường hợp trong không gian hữu hạn chiều mà đơn giản hơn để kiểm tra sự tồn tại của chặn sai số toàn cục.
+
+\begin{theorem}
+    \label{theorem:global_err_bound_finite}
+    Với bất phương trình \eqref{eq:convex_inequality}, giả định rằng $X = \R^n$. Và giả sử rằng $S$ compact, và $\text{bd} S \subseteq f^{-1}(0)$. Thì bất phương trình \eqref{eq:convex_inequality} có một chặn sai số toàn cục nếu và chỉ nếu tồn tại $\tau >0$ mà với mọi $x^e \in \text{ext}S$ thỏa mãn điều kiện sau:
+    \begin{equation}
+        N_S(x^e) \cap \mathbb{S}^* \subseteq A := \begin{cases}
+            (0, \tau]\partial f(x^e)\quad\text{nếu } \partial f(x^e) \ne \varnothing,\\
+            \partial^{\infty}f(x^e)\quad\text{nếu } \partial f(x^e) = \varnothing
+        \end{cases}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+Trong một số trường hợp, tập hợp các điểm cực tri có thể nhỏ hơn tập các điểm biên. Ví dụ sau đây minh họa ưu điểm của Định lý \ref{theorem:global_err_bound_finite} so với các kết quả trước đây. Hơn nữa, nó cũng cho thấy điều kiện \eqref{eq:sufficient_condition} trong Định lý \ref{theorem:sufficient_criterion} là không cần thiết.
+
+
+\begin{eg}
+    Hàm $f: \R^2 \rightarrow \R \cup \{+\infty\}$ được cho bởi
+    \begin{equation}
+        f(x_1, x_2) = \begin{cases}
+            \max\{e^{-x_1}-1, |x_2|\}\quad\text{nếu } (x_1, x_2) \in (-\infty, 2] \times \R, \\
+            +\infty\quad\text{khác}.
+        \end{cases}
+    \end{equation}
+\end{eg}
+
+\begin{coro}
+    \label{coro:global_err_bound_finite}
+    Với bất phương trình \eqref{eq:convex_inequality}, giả định rằng $X = \R^n$, $f$ liên tục và $S$ compact. Thì bất phương trình \eqref{eq:convex_inequality} có một chặn sai số toàn cục nếu và chỉ nếu tồn tại $\tau > 0$ mà với mọi $x^e \in \text{ext}S$ mà thỏa điều kiện sau:
+    \begin{equation}
+        N_S(x^e) \cap \mathbb{S}^* \subseteq (0, \tau]\partial f(x^e).
+    \end{equation}
+\end{coro}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+Quan sát rằng khi tập nghiệm $S$ compact và $f$ liên tục, thì ta thường sử dụng điều kiện Slater để xác sự tồn tại của một chặn sai số toàn cục bởi vì nó là một điều kiện đủ đơn giản. Nhưng mà, điều kiện này có thể không thỏa trong một số tình huống khi mà Hệ quả \ref{coro:global_err_bound_finite} có thể được áp dụng. Chúng ta xem xét ví dụ minh họa sau đây.
+
+\begin{eg}
+    Hàm $f: \R \rightarrow \R$ được định nghĩa bởi
+    \begin{equation}
+        f(x) = \max\{g_1(x), g_2(x), 0\}
+    \end{equation}
+\end{eg}

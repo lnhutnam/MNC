@@ -1,0 +1,125 @@
+\chapter{KIẾN THỨC CHUẨN BỊ}
+
+Trong chương này, chúng tôi trình bày các kiến thức chuẩn bị để từ đó làm tiền đề cho toàn bộ luận văn.
+
+
+\section{Hệ thống ký hiệu, các định nghĩa tiền đề}
+
+Xem xét không gian $X$ là một không gian Banach bất kỳ với chuẩn $\left \| . \right \|$, và ghép nối chuẩn giữa không gian $X$ và topo đối ngẫu của nó $X*$ được ký hiệu là $\left \langle \cdot, \cdot \right \rangle$. 
+
+Ta gọi $(\varLambda ,\preccurlyeq)$ là một tập hữu hướng. Ta gọi một lưới trong $X$ được đánh chỉ số bởi $\varLambda$ là $(x_{\lambda})_{\lambda \in \varLambda}$.
+
+Cho trước một tập $C \subset X$, ta ký hiệu phần trong, bao đóng, bao, bao lồi, bao conic của $C$ lần lượt là $\text{int}C$, $\overline{C}$, $\text{bd}C$, $\text{co}C$, và $\text{cone}C$. Khi tập $C$ là một tập lồi, $\text{ext}C$ chỉ tập các điểm cực trị của $C$.
+
+Ta ký hiệu $\mathbb{B}(x, r)$ là quả cầu mở trong $X$ với tâm $x$ và bán kính $r > 0$, còn $\overline{\mathbb{B}^{*}}(x^{*}, R)$ là quả cầu đóng trong $X^{*}$ với tâm tại $x^{*}$ và bán kính $R > 0$. Ta gọi $\mathbb{S}^{*}$ đại diện cho mặt cầu đơn vị của $X^{*}$. 
+
+Với một tập hợp khác rỗng $T \subset [0, + \infty)$ và $C \subset X$, ta quy ước rằng 
+\begin{equation}
+    TC := \begin{cases}
+        \{tx \mid t \in T, x \in C\}\quad C \ne 0 \\ 
+        \{ 0\}, \quad\text{ngược lại}
+    \end{cases}
+\end{equation}
+
+Gọi $f: X \rightarrow \mathbb{R} \cup \{+\infty\}$ là một hàm lồi chính thường. Ta sử dụng các ký hiệu chuẩn như sau cho miền (domain) và epigraph của $f$:
+\begin{equation}
+    \text{dom}f := \{x \in X \mid f(x) < +\infty\}
+\end{equation} 
+và
+\begin{equation}
+    \text{epi}f := \{(x, r) \in X \times \mathbb{R} \mid f(x) \leq r\}
+\end{equation}
+Bởi vì $\text{dom}f$ lồi, do đó $\overline{\text{dom}f}$ lồi. 
+
+Ta cũng sử dụng định nghĩa dưới vi phân của $f$ tại $\overline{x} \in \text{dom}f$ là tập hợp
+\begin{equation}
+    \partial f(\overline{x}) := \{x^* \in X^* \mid \left \langle x^*, x - \overline{x} \right \rangle \leq f(x) - f(\overline{x}), \forall x \in X\}
+\end{equation}
+Nếu $f(\overline{x}) = + \infty$ thì ta đặt $\partial f(\overline{x}) := \varnothing$. Với một tập lồi khác rỗng $C \subset X$, nón chuẩn của $C$ tại $\overline{x} \in C$ được ký hiệu bởi $N_C(\overline{x})$ và được cho bởi:
+\begin{equation}
+    N_C(\overline{x}) := \partial \delta_C(\overline{x}) = \{x^* \in X^* \mid \left \langle x^*, x - \overline{x} \right \rangle \leq 0, \forall x \in C\}
+\end{equation}
+trong đó $\delta_C(.)$ đại diện cho hàm chỉ của $C$ và được định nghĩa bởi
+\begin{equation}
+    \delta_C(.) := \begin{cases}
+        0\quad x \in C\\
+        +\infty\quad \text{ngược lại}
+    \end{cases}
+\end{equation}
+Ta định nghĩa dưới vi phân kỳ dị của $f$ tại $\overline{x} \in \text{dom} f$:
+\begin{equation}
+    \partial^{\infty}f(\overline{x}) := \{x^* \in X^* \mid (x^*, 0) \in N_{\text{epi}f}(\overline{x}, f(\overline{x}))\}
+\end{equation}
+Nếu $f(\overline{x}) = +\infty$, ta coi $\partial^{\infty}f(\overline{x}) = \varnothing$. Và nó dễ dàng kiểm tra được:
+\begin{equation}
+    \partial^{\infty}f(\overline{x}) = N_{\text{dom}f}(\overline{x})
+\end{equation}
+
+Các định nghĩa mà chúng tôi đề cập ở trên là về nón chuẩn, dưới vi phân và dưới vi phân kỳ dị mà chúng không yêu cầu về giả định tính đóng và nửa liên tục dưới trên các tập hợp và hàm.
+
+\section{Khai triển dưới vi phân}
+
+Phần này chúng tôi trình bày một bổ đề mà cho phép khai triển dưới vi phân $\partial f(\overline{x})$ dưới dạng tổng của $\partial f(\overline{x})$ và $\partial^{\infty}f(\overline{x})$.
+
+\begin{lemma}
+    Với $\overline{x} \in \text{dom}$, ta có:
+    \begin{equation}
+        \partial f(\overline{x}) = \partial f(\overline{x}) + \partial^{\infty}f(\overline{x})
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Nếu $\partial f(\overline{x}) = \varnothing$, thì $\partial f(\overline{x}) + \partial^{\infty}f(\overline{x}) = \varnothing$, và do đó ta rút ra kết luận của bổ đề là điều hiển nhiên.
+
+    Ngược lại, đầu tiên ta nhận thấy tập hợp ở vế phải chứa tập hợp ở vế trái. Gọi bất kỳ $x^* \in \partial f(\overline{x})$, bất kỳ $y^* \in \partial^{\infty}f(\overline{x})$. Thì, với mọi $x \in \text{dom}f$, ta có:
+    \begin{equation}
+        \left \langle x^*, x - \overline{x} \right \rangle \leq f(x) - f(\overline{x})
+    \end{equation}
+    và
+    \begin{equation}
+        \left \langle y^*, x - \overline{x} \right \rangle + 0(f(x) - f(\overline{x})) \leq 0.
+    \end{equation}
+    Bằng cách lấy tổng vế theo vế những bất đẳng thức này, ta thu được:
+    \begin{equation}
+        \left \langle x^* + y^*, x - \overline{x} \right \rangle \leq f(x) - f(\overline{x})
+    \end{equation}
+    mà ám chỉ rằng $x^* + y^* \in \partial f(\overline{x})$. Chứng minh hoàn tất.
+\end{proof}
+
+\section{Dưới vi phân của hàm khoảng cách}
+
+Gọi $\overline{x} \in \text{dom}f$ và $h \in X$. Đạo hàm theo hướng của $f$ tại $\overline{x}$ theo hướng $h$, được định nghĩa
+\begin{equation}
+    f'(\overline{x}, h) := \lim_{t \rightarrow 0^{+}}\dfrac{f(\overline{x}+th)-f(\overline{x})}{t}
+\end{equation}
+khi mà giới hạn tồn tại. Nó hoàn toàn khả thi rằng $f'(\overline{x}, \cdot)$ có giá trị $-\infty$.
+
+Hàm khoảng cách liên kết với $C \subset X$ được cho bởi công thức:
+\begin{equation}
+    d(x, C) := \inf\{\left \| x - y \right \| \mid y \in C\} \quad \text{với}\quad x \in X
+\end{equation}
+với quy ước rằng $d(x, C) := +\infty$ khi $C = \varnothing$. Khi $C$ là một tập lồi khác rỗng, dưới vi phân của hàm khoảng cách $d(\cdot, C)$ tại mọi điểm $C$ được tính như sau:
+\begin{equation}
+    \partial d(x, C) = N_C(x) \cap \mathbb{B}^*\quad\text{với mọi}\quad x \in C
+\end{equation}
+
+\begin{lemma}
+    Giả định rằng $C$ là một tập con lồi đóng khác rỗng của $X$ và $x^* \in \partial d(x, C)$. Thì $\left \| x^* \right \| = 1$ và tồn tại một dãy cực tiểu $(y_n)_{n \in \mathbb{N}}$ trong $C$ của $d(x, C)$, tức là $d(x, C) = \lim_{n \rightarrow \infty}\left \| y_n - x \right \|$ và $y_n^* \in N_C(y_n)$ mà thỏa
+    \begin{equation}
+        d(x, C) = \lim_{n \rightarrow \infty}\left \langle y^*_n, x - y_n \right \rangle
+    \end{equation}
+    và
+    \begin{equation}
+        \left \| y_n^* - x^* \right \| \rightarrow 0 \quad\text{khi}\quad n \rightarrow \infty
+    \end{equation}
+\end{lemma}
+
+\begin{lemma}
+    Cho $x \in X$. Giả định rằng $C$ là một tập con lồi đóng khác rỗng của $X$. Thì tồn tại một dãy nhỏ nhất $(y_n)_{n \in \mathbb{N}}$ trong $C$ với $x$ và $y^*_n \in N_C(y_n)$ sao cho
+    \begin{equation}
+        d(x, C) = \lim_{n \rightarrow \infty}\left \langle y^*_n, x - y_n \right \rangle
+    \end{equation}
+    và
+    \begin{equation}
+        \limsup_{n \rightarrow \infty} \left \| y_n^* \right \| \leq 1
+    \end{equation}
+\end{lemma}

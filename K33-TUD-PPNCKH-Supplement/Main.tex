@@ -1,0 +1,69 @@
+%!TeX program = xelatex
+
+\documentclass[fontsize=13.0pt, oneside, a4paper, openany, vietnamese]{Thesis}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+\usepackage[backend=bibtex,bibstyle=thesis,sorting=nyvt,block=none,defernumbers=true,autolang=other]{biblatex}
+
+\addbibresource{refs.bib}
+
+% Package generate lorem text
+\usepackage{lipsum}
+
+\begin{document}
+    % Trang bìa
+    % Nếu là tiếng Việt
+    \input{Cover}
+
+    % Nếu là tiếng Anh
+    \input{Cover_En}
+    \numRoman
+
+    % Lời cam đoan và lời cảm ơn
+    \input{Acknowledgements}
+
+    % Mục lục
+    \contents
+
+    % Trang thông tin luận văn
+    \input{ThesisInfo}
+    \input{ThesisInfo_En}
+
+    % Danh mục các ký hiệu, chữ viết tắt
+    \input{SymbolsList}
+
+    % Danh mục các bảng
+    \listTables
+
+    % Danh mục các hình vẽ, đồ thị
+    \listImages
+    \pageNumber
+
+    % Chưởng 1: Mở đầu
+    % Giới thiệu chung
+    % Động lực nghiên cứu khoa học
+    % Ý nghĩa thực tiễn ứng dụng
+    % Những đóng góp của luận văn
+    % Cấu trúc của luận văn
+    \input{Chapter00}
+    
+    \input{Chapter01}
+
+    % Chương 2
+    \input{Chapter02}
+
+    % Chương 3
+    \input{Chapter03}
+
+    % Chương 4
+    \input{Chapter04}
+
+    % Chương 5
+    \input{Chapter05}
+
+    % Tài liệu tham khảo
+    \refs
+    \nocite{*}
+    
+\end{document}

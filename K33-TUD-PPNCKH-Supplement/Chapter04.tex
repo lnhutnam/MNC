@@ -1,0 +1,96 @@
+\chapter{ĐIỀU KIỆN CẦN VÀ ĐỦ CHO TÍNH CHẤT PLV, VÀ ỨNG DỤNG}
+
+Trong chương này, chúng tôi trình bày một quy tắc để tính toán tập hợp dưới vi phân của chặn trên nhỏ nhất từng điểm của hàm lồi liên tục được định nghĩa trên không gian Banach. Kết quả này cùng với kết quả ở chương trước được áp dụng để khám phá sự tồn tại của chặn sai số toàn cục cho hệ vô hạn bất phương trình lồi và tuyến tính.
+
+\section{Mở đầu}
+
+Đặt $f_i: X \rightarrow \R, i \in I$ là một họ các hàm lồi chính thường, trong đó $I$ là một tập hợp có chỉ số bất kỳ (không nhất thiết phải hữu hạn). Với mỗi $x \in X$, ta định nghĩa $F(x) := \sup_{i \in I}\{f_i(x)\}$ và tập chỉ số kích hoạt tại $x$ là
+\begin{equation}
+    I(x) := \{ i \in I \mid f_i(x) = F(x)\}.
+\end{equation}
+Ta luôn giả định rằng chặn trên nhỏ nhất của hàm $F(x) < +\infty$ với mọi $x \in X$.
+
+\begin{defi}
+    Họ hàm $\{f_i\}_{i \in I}$ được gọi là tính chất Pshenichnyi-Levin-Valadier (viết tắt là PLV) tại $x \in \text{dom}F$ nếu
+    \begin{equation}
+        \label{eq:plv}
+        \partial F(x) = \text{co}\left(\bigcup_{i \in I(x)} \partial f_i(x) \right)
+    \end{equation}
+\end{defi}
+Định nghĩa này có một giả định rằng
+\begin{equation}
+    \bigcup_{i \in \varnothing}\partial f_i(x) = \varnothing.
+\end{equation}
+
+% \begin{remark}
+%     \begin{enumerate}
+%         \item Định nghĩa này được đưa vào và nghiên cứu cho trường hợp cụ thể mà trong đó $X$ là một không gian hữu hạn chiều và được khám phá trong không gian vector topo lồi Hausdorff. Khi $I$ là hữu hạn và mỗi $f_i$ là liên tục, điều kiện đủ được cùng cấp cho \eqref{eq:plv} trong hữu hạn chiều 
+%     \end{enumerate}
+% \end{remark}
+
+\begin{defi}
+    Gọi $D: X \rightrightarrows X^*$ là một ánh xạ đa trị và $x \in X$. Thì $D$ được gọi là nửa liên tục trên Kuratowski (uKsc) tại $x$ nếu quan hệ $(x_\lambda)_{\lambda \in \varLambda} \rightarrow x$, $x^*_\lambda \in D(x_\lambda)$ và $(x^*_\lambda)_{\lambda \in \varLambda} \overset{w^*}{\rightarrow} x^*$ ám chỉ rằng $x^* \in D(x)$, trong đó $(x_\lambda)_{\lambda \in \varLambda} \rightarrow x$ (tương đương với, $(x^*_\lambda)_{\lambda \in \varLambda} \overset{w^*}{\rightarrow} x^*$) có nghĩa là lưới $(x_{\lambda})_{\lambda \in \varLambda}$ hội tụ về $x$ tương ứng với chuẩn topo của $X$ (tương đương với $(x^*_\lambda)_{\lambda \in \varLambda}$ hội tụ về $x^*$ tương ứng với topo yếu * của $X^*$). Ta nói $D$ uKsc nếu nó là uKsc tại hầu khắp trong miền của nó.
+\end{defi}
+
+Ký hiệu trên về nửa liên tục trên Kuratowski (uKsc) được xem xét cho trường hợp cụ thể $X = \R^n$ và được sử dụng kể khám phá tính chất PLV.
+
+Hơn nữa, nhắc lại rằng, một tập đa trị $T: X \rightrightarrows X^*$ được gọi là bị chặn cục bộ tại $\overline{x} \in X$ nếu tồn tại $r > 0$ mà $T(\mathbb{B}(\overline{x}, r))$ là một tập bị chặn. 
+
+Trước khi đi vào kết quả chính, ta sử dụng hai kết quả trong Bổ đề sau:
+
+\begin{lemma}
+    \label{lemma:sufficient_Kuratowski}
+    Gọi $g: X \rightarrow \R \cap \{+\infty\}$ là một hàm lồi nửa liên tục dưới và $\overline{x} \in \overline{\text{dom}g}$ và gọi $(x_\lambda, x_\lambda^*) \in \text{gph}\partial g$ với mọi $\lambda \in \varLambda$. Thì:
+    \begin{itemize}
+        \item $\partial g$ bị chặn cục bộ tại $\overline{x}$ nếu và chỉ nếu $\overline{x} \in \overline{\text{dom}g}$.
+        \item Nếu $(x_\lambda)_{\lambda \in \varLambda} \rightarrow \overline{x}, (x_\lambda^*)_{\lambda \in \varLambda} \overset{w^*}{\rightarrow} x^*$ và lưới $(x_\lambda^*)_{\lambda \in \varLambda}$ là chuẩn bị chặn thì $(\overline{x}, \overline{x}^*) \in \text{gph}\partial g$.
+    \end{itemize}
+\end{lemma}
+
+Bổ đề \ref{lemma:sufficient_Kuratowski} là một điều kiện đủ cho nửa liên tục trên Kuratowski của $\partial g$.
+
+\section{Kết quả chính}
+
+Phần này, chúng tôi trình bày về điều kiện cần và đủ cho tính chất PLV như sau:
+
+\begin{theorem}
+    \label{theorem:necessary_sufficient_condition_plv}
+    Gọi $f_i$ là hàm lồi liên tục với mọi $i \in I$ và gọi $\overline{x} \in X$. Đặt
+    \begin{equation}
+        D(x) := \text{co}\left(\bigcup_{i \in I(x)}\partial f_i(x) \right)\quad\text{với } x \in X
+    \end{equation}
+    Giả sử rằng $I(z)$ khác rỗng với mọi $z$ trong một lần cận của $\overline{x}$. Thì, $\partial F(\overline{x}) = D(\overline{x})$ nếu và chỉ nếu $D$ là uKsc tại $\overline{x}$.
+\end{theorem}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+Và bây giờ, ta áp dụng Định lý \ref{theorem:necessary_sufficient_condition_plv} để mà nghiên cứu lý thuyết chặn sai số. Gọi $f_i, i \in I$, và $F$ như đã đề cập đầu chương. Xem xét hệ bất phương trình lồi:
+\begin{equation}
+    \label{eq:convex_inequalities_system}
+    f_i(x) \leq 0, \forall i \in I
+\end{equation}
+
+\begin{defi}
+    Hệ \eqref{eq:convex_inequalities_system} được gọi là có một chặn sai số toàn cục nếu tồn tại một số thực $\tau > 0$ sao cho
+    \begin{equation}
+        d(x, S_F) \leq \tau F_{+}(x)\quad\text{với mọi } x \in X,
+    \end{equation}
+    trong đó $S_F := \{ x \i X \mid f_i(x) \leq 0, \forall i \in I\}$ và $F_{+}(x) := \max\{F(x), 0\}$. Ta cũng đặt $\tau_{\min}$ là chặn dưới lớn nhất của tắt cả hằng chặn sai số $\tau$ thỏa điều kiện trên.
+\end{defi}
+
+Mệnh đề sau đây mô tả đặc điểm của giới hạn lỗi toàn cục cho hệ \eqref{eq:convex_inequalities_system}.
+
+\begin{prop}
+    Gọi họ hàm $\{f_i\}_{i \in I}$ và $D$ như trong Định lý \ref{theorem:necessary_sufficient_condition_plv}. Giả định rằng với mọi $x \in \text{bd}S_F$, $D$ là uKsc tại $x$ và $I(z) \ne \varnothing$ với mọi $z$ trong lân cận của $x$. Thì, hệ \eqref{eq:convex_inequalities_system} có một chặn sai số toàn cục nếu và chỉ nếu tồn tại $\tau > 0$ sao cho với mọi $x \in \text{bd}S$ thỏa mãn điều kiện sau:
+    \begin{align}
+        \begin{aligned} N_{S_F}(x)\cap \mathbb{S^*}\subseteq A:=\left\{ \begin{array}{ll} (0,\tau ]\textrm{co}\Big (\bigcup _{i\in I(x)}\partial f_i(x)\Big )\quad \textrm{nếu } F(x)=0 \text { và } \partial F(x)\ne \emptyset ,\\ \partial ^\infty F(x)\quad \textrm{khác }. \end{array}\right. \\ \end{aligned}
+    \end{align}
+\end{prop}
+\begin{proof}
+    Sẽ bổ sung chứng minh sau.
+\end{proof}
+
+\section{Một số trường hợp đặc biệt}
+
+Sẽ bổ sung sau.

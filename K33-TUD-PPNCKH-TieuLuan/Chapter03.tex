@@ -1,0 +1,292 @@
+\chapter{TẬP HỢP, HÀM, VÀ QUAN HỆ}
+
+Trong chương này, chúng tôi trình bày về chủ đề tập hợp, hàm, và quan hệ. Đây là một chủ đề nền tảng cơ sở cho Toán học. Chủ đề này nhằm củng cố kiến thức nền tảng cho Giải tích 1.
+
+\section{Tập hợp}
+
+\begin{defi}[Tập hợp]
+  \emph{Tập hợp (set)} là một các đối tượng, không liên quan đến thứ tự. Các phần tử trong một tập hợp chỉ được tính một lần. Ví dụ: nếu $a = 2, b = c = 1$ thì $A = \{a, b, c\}$ chỉ có hai thành phần. Chúng ta viết $x\in X$ nếu $x$ là thành phần của tập $X$.
+\end{defi}
+
+\begin{eg}
+  Các tập hợp phổ biến và các ký hiệu dùng để biểu thị chúng:
+  \begin{itemize}
+    \item $\N = \{1, 2, 3, \cdots \}$ là các số tự nhiên
+    \item $\N_0 = \{0, 1, 2, \cdots \}$ là các số tự nhiên với $0$
+    \item $\Z = \{\cdots, -2, -1, 0, 1, 2, \cdots \}$ là các số nguyên
+    \item $\Q = \{\frac{a}{b}: a, b\in \Z, b \not= 0\}$ là các số hữu tỉ
+    \item $\R$ là các số thực
+    \item $\C$ là các số phức
+  \end{itemize}
+  Người ta vẫn còn tranh luận liệu $0$ có phải là số tự nhiên hay không. Những người tin rằng $0$ là số tự nhiên thường viết $\N$ cho $\{0, 1, 2, \cdots\}$ và $\N^+$ cho các số tự nhiên dương. Tuy nhiên, trong hầu hết mọi trường hợp, điều đó không thành vấn đề và khi xảy ra, chúng ta nên đưa ra chỉ định rõ ràng.
+\end{eg}
+\begin{defi}[Sự bằng nhau của các tập hợp]
+  $A$ được gọi là bằng $B$, và được viết là $A = B$, nếu
+  \[
+    (\forall x)\,x\in A \Leftrightarrow x\in B,
+  \]
+  tức là, hai tập hợp là bằng nhau khi chúng có cùng phần tử.
+\end{defi}
+
+\begin{defi}[Tập hợp con]
+  $A$ là một \emph{tập hợp con} của $B$, được viết là $A\subseteq B$ hoặc $A\subset B$, nếu tất cả các phần tử trong $A$ đều nằm trong $B$, tức là
+  \[
+    (\forall x)\,x\in A\Rightarrow x\in B.
+  \]
+\end{defi}
+
+\begin{thm}
+  $(A=B)\Leftrightarrow (A\subseteq B \text{ và }B\subseteq A)$
+\end{thm}
+
+Giả sử $X$ là một tập hợp và $P$ là thuộc tính của một số phần tử trong $x$, chúng ta có thể viết một tập hợp $\{x\in X:P(x)\}$ cho tập con của $x$ bao gồm của các phần tử mà $P(x)$ là đúng. Ví dụ:\ $\{n\in \N : n \text{ là số nguyên tố}\}$ là tập hợp tất cả các số nguyên tố.
+
+\begin{defi}[Giao, hội, hiệu tập hợp, hiệu đối xứng, và tập lũy thừa]
+  Cho hai tập $A$ và $B$, chúng ta định nghĩa như sau:
+  \begin{itemize}
+    \item Giao: $A\cap B = \{x:x\in A \text{ và } x\in B\}$
+    \item Hội: $A\cup B = \{x:x\in A\text{ hoặc }x\in B\}$
+    \item Hiệu tập hợp: $A\setminus B = \{x\in A: x\not\in B\}$
+    \item Hiệu đối xứng: $A\Delta B = \{x: x\in A\text{ hoặc chỉ } x\in B\}$, tức là các phần tử thuộc chính xác một trong hai tập
+    \item Tập lũy thừa: $\mathcal{P}(A) = \{ X : X\subseteq A\}$, tức là tập hợp tất cả các tập hợp con
+  \end{itemize}
+\end{defi}
+
+Các tập hợp mới chỉ có thể được tạo thông qua các toán tử trên đối với các tập hợp cũ (cộng thay thế, nghĩa là ta có thể thay thế một phần tử của tập hợp bằng một phần tử khác). Người ta không thể tùy tiện tạo các tập hợp như $X=\{x:x\text{ là một tập hợp và }x\not\in x\}$. Nếu không nghịch lý sẽ nảy sinh.
+
+Chúng ta có một số quy tắc liên quan đến cách hoạt động của các toán tử, điều này có thể thấy rõ bằng trực giác.
+\begin{prop}\leavevmode
+  \begin{itemize}
+    \item $(A\cap B)\cap C = A \cap (B\cap C)$
+    \item $(A\cup B)\cup C = A\cup (B\cup C)$
+    \item $A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$
+  \end{itemize}
+\end{prop}
+
+\begin{notation}
+  Nếu $A_\alpha$ là các tập hợp với mọi $\alpha \in I$, thì
+  \[
+    \bigcap_{\alpha\in I}A_\alpha = \{x: (\forall\alpha\in I) x\in A_\alpha\}
+  \]
+  và
+  \[
+    \bigcup_{\alpha\in I}A_\alpha = \{x: (\exists\alpha\in I) x\in A_\alpha\}.
+  \]
+\end{notation}
+
+\begin{defi}[Cặp thứ tự]
+  Một \emph{cặp có thứ tự} $(a, b)$ là một cặp gồm hai phần tử mà thứ tự là quan trọng. Về mặt hình thức, nó được định nghĩa là $\{\{a\}, \{a, b\}\}$. Chúng ta có $(a, b) = (a', b')$ nếu và chỉ nếu $a = a'$ và $b = b'$.
+\end{defi}
+
+\begin{defi}[Tích Cartesian]
+  Cho hai tập $A, B$, \emph{tích Descartes} của $A$ và $B$ là $A\times B = \{(a, b):a\in A, b\in B\} $. Điều này có thể được mở rộng cho tích $n$ lần, ví dụ:\ $\R^3 = \R\times\R\times\R = \{(x,y,z): x, y, z\in \R\} $ (chính thức là $\{(x, (y, z)): x, y, z\in \R\}$).
+\end{defi}
+
+\section{Hàm}
+
+\begin{defi}[Hàm/ ánh xạ]
+  Một \emph{hàm (function)} (hoặc \emph{ánh xạ - map}) $f: A\to B$ là một "quy tắc" gán, cho mỗi $a\in A$, chính xác một phần tử $f(a)\ bằng B$. Chúng ta có thể viết $a\mapsto f(a)$. $A$ và $B$ lần lượt được gọi là \emph{miền (domain)} và \emph{đồng miền (co-domain)}.
+\end{defi}
+Nếu chúng ta muốn hình thức hơn, chúng ta có thể định nghĩa một hàm là một tập con $f \subseteq A \times B$ sao cho với mọi $a \in A$, tồn tại một $b\in B$ duy nhất sao cho $ (a, b)\in f$. Sau đó chúng ta nghĩ về $(a, b) \in f$ khi nói $f(a) = b$. Tuy nhiên, mặc dù điều này có thể đóng vai trò như một định nghĩa chính thức về hàm số, nhưng đó là một cách nghĩ rất phức tạp về hàm.
+
+\begin{eg}
+  $x^2: \R \to \R$ là một hàm gửi $x$ đến $x^2$. $\frac{1}{x}:\R\to\R$ không phải là một hàm vì $f(0)$ không được xác định. $\pm x: \R\to\R$ cũng không phải là một hàm vì nó có nhiều giá trị (multi-valued).
+\end{eg}
+
+Việc phân loại các ánh xạ thành các loại khác nhau thường rất hữu ích.
+\begin{defi}[Đơn ánh]
+  Hàm $f: X \to Y$ là \emph{đơn ánh} nếu nó chạm vào mọi thứ nhiều nhất một lần, tức là.
+  \[
+    (\forall x, y\in X)\,f(x) = f(y)\Rightarrow x = y.
+  \]
+\end{defi}
+
+\begin{defi}[Toàn ánh]
+  Hàm $f: X \to Y$ là \emph{toàn ánh} nếu nó chạm vào mọi thứ ít nhất một lần, tức là.
+  \[
+    (\forall y\in Y)(\exists x\in X)\,f(x) = y
+  \]
+\end{defi}
+
+\begin{eg}
+  $f: \R \to\R^+\cup\{0\}$ with $x \mapsto x^2$ là toàn ánh nhưng không là đơn ánh.
+\end{eg}
+
+\begin{defi}[Song ánh]
+  Một hàm là \emph{song ánh} nếu nó vừa là đơn ánh và vừa là toàn ánh, tức là nó chạm mọi thứ chính xác một lần.
+\end{defi}
+
+\begin{defi}[Hoán vị]
+  Một \emph{hoán vị} của $A$ là một song ánh $A\to A$.
+\end{defi}
+
+\begin{defi}[Hàm hợp]
+  \emph{Hợp} của hai hàm là hàm mà nhận được bằng cách áp dụng lần lượt từng hàm. Cụ thể, nếu $f: X \rightarrow Y$ và $G: Y\rightarrow Z$, thì $g\circ f: X \rightarrow Z$ được xác định bởi $g\circ f(x) = g(f( x))$. Lưu ý rằng thành phần hàm có tính kết hợp.
+\end{defi}
+
+\begin{defi}[Ảnh của hàm]
+  Nếu $f: A\to B$ và $U\subseteq A$, thì $f(U) = \{f(u):u\in U\}$. $f(A)$ là \emph{ảnh} của $A$.
+\end{defi}
+Bởi định nghĩa, $f$ là toàn ánh nếu và chỉ nếu $f(A) = B$.
+
+\begin{defi}[Tiền ảnh]
+  Nếu $f: A\to B$ và $V\subseteq B$, thì $f^{-1}(V) = \{a\in A: f(a)\in V\}$.
+\end{defi}
+Đây là \emph{tiền ảnh} của hàm $f$ và hoạt động trên \emph{các tập con} của $B$. Điều này được xác định cho bất kỳ hàm $f$ nào. Điều quan trọng cần lưu ý là chúng ta sử dụng cùng một ký hiệu $f^{-1}$ để biểu thị \emph{hàm nghịch đảo} mà chúng ta sẽ định nghĩa sau, nhưng chúng là những thực thể rất khác biệt. Ví dụ, chúng ta sẽ thấy hàm nghịch đảo chỉ tồn tại đối với song ánh.
+
+Để định nghĩa hàm nghịch đảo, trước tiên chúng ta cần một số định nghĩa sơ bộ.
+
+\begin{defi}[Ánh xạ đơn vị]
+  \emph{Ánh xạ đơn vị} được định nghĩa là ánh xạ $a\mapsto a$.
+\end{defi}
+
+\begin{defi}[Nghịch đảo trái của hàm]
+  Cho trước $f: A\to B$, một \emph{nghịch đảo trái của hàm} của $f$ là một hàm $g:B\to A$ mà $g\circ f = \id _A$.
+\end{defi}
+
+\begin{defi}[Nghịch đảo phải của hàm]
+  Cho trước $f: A\to B$, một \emph{nghịch đảo phải của hàm} of $f$ là một hàm $g:B\to A$ mà $f\circ g = \id _B$.
+\end{defi}
+
+\begin{thm}
+  Nghịch đảo trái của $f$ tồn tại nếu và chỉ nếu $f$ là đơn ánh.
+\end{thm}
+
+\begin{proof}
+  ($\Rightarrow$)
+  Nếu nghịch đảo trái $g$ tồn tại, thì $\forall a, a'\in A, f(a) = f(a') \Rightarrow g( f(a))=g(f(a'))\Rightarrow a=a'$. Do đó $f$ là đơn ánh.
+
+  ($\Leftarrow$) Nếu $f$ là đơn ánh, chúng ta có thể xây dựng hàm $g$ được định nghĩa như sau
+  \[
+    g: \begin{cases}
+      g(b) = a &\text{if }b\in f(A), \text{ where }f(a) = b\\
+      g(b) = \text{anything} & \text{otherwise}
+    \end{cases}.
+  \]
+  Thì $g$ là nghịch đảo trái của $f$.
+\end{proof}
+
+\begin{thm}
+  Nghịch đảo trái của $f$ tồn tại nếu và chỉ nếu $f$ là toàn ánh.
+\end{thm}
+
+\begin{proof}
+  ($\Rightarrow$) Ta có $f(g(B)) = B$ bởi vì $f\circ g$ là ánh xạ đơn vị. Do đó $f$ phải là toàn ánh bởi vì ảnh của nó là $B$.
+
+  ($\Leftarrow$) Nếu $f$ là toàn ánh, chúng ta có thể xây dựng một $g$ sao cho với mỗi $b\in B$, chọn một $a\in A$ với $f(a) = b$, và đặt $g(b) = một$.
+\end{proof}
+
+(Lưu ý rằng để chứng minh phần thứ hai, với mỗi $b$, chúng ta cần \emph{chọn} một $a$ sao cho $f(a) = b$. Nếu $B$ là vô hạn, làm như vậy đòi hỏi phải tạo ra vô hạn sự lựa chọn tùy ý. Chúng ta có được phép làm như vậy không?
+
+Để đưa ra những lựa chọn vô hạn, chúng ta cần sử dụng \emph{Tiên đề lựa chọn (Axiom of choice)}, trong đó nói rõ rằng điều này được cho phép. Cụ thể, nó nói rằng với một họ các tập $A_i$ cho $i \in I$, tồn tại một \emph{hàm lựa chọn} $f: I \to \bigcup A_i$ sao cho $f(i)\in A_i$ với mọi $i$.
+
+Vậy liệu chúng ta có thể chứng minh định lý mà không cần Tiên đề Lựa chọn không? Câu trả lời là không. Điều này là do nếu chúng ta giả sử các hàm tính từ nghịch đảo thì chúng ta có thể chứng minh Tiên đề Lựa chọn.
+
+Giả sử mọi toàn ánh $f$ đều có nghịch đảo đúng. Cho một họ các tập hợp không trống $A_i$ cho $i\in I$ (không mất tính tổng quát, giả sử chúng rời rạc), hãy xác định một hàm $f: \bigcup A_i \to I$ để gửi từng phần tử đến tập hợp chứa phần tử đó. Đây là tính từ vì mỗi tập hợp đều không trống. Khi đó nó có nghịch đảo bên phải. Khi đó nghịch đảo bên phải phải gửi từng tập hợp tới một phần tử trong tập hợp đó, tức là là hàm lựa chọn cho $A_i$.)
+
+
+\begin{defi}[Nghịch đảo của hàm]
+  Một \emph{nghịch đảo} của $f$ là một hàm vừa nghịch đảo trái vừa nghịch đảo phải. Nó được viết là $f^{-1}: B\to A$. Nó tồn tại nếu $f$ là song ánh, và nó là duy nhất.
+\end{defi}
+
+\section{Quan hệ}
+
+\begin{defi}[Quan hệ]
+  Một \emph{quan hệ} $R$ trên $A$ chỉ một số phần tử của $A$ có liên hệ với một số khác. Một cách hình thức, một quan hệ là một tập hợp con $R\subseteq A\times A$. Ta viết $aRb$ nếu và chỉ nếu $(a, b)\in R$.
+\end{defi}
+
+\begin{eg}
+  Sau đây là ví dụ về quan hệ trên các số tự nhiên:
+  \begin{enumerate}
+    \item $aRb$ nếu và chỉ nếu $a$ và $b$ có cùng chữ số cuối cùng, ví dụ $(37)R(57)$.
+    \item $aRb$ nếu và chỉ nếu $a$ chia hết cho $b$. ví dụ $2R6$ và $2\not \!\!R 7$.
+    \item $aRb$ nếu và chỉ nếu $a\not= b$.
+    \item $aRb$ nếu và chỉ nếu $a = b = 1$.
+    \item $aRb$ nếu và chỉ nếu $|a - b|\leq 3$.
+    \item $aRb$ nếu và chỉ nếu hoặc $a, b\geq 5$ hoặc $a, b\leq 4$.
+  \end{enumerate}
+\end{eg}
+
+Một lần nữa, chúng tôi muốn phân loại các quan hệ khác nhau.
+\begin{defi}[Quan hệ phản xứng]
+  Một quan hệ $R$ là \emph{phản xứng} if
+  \[
+    (\forall a)\,aRa.
+  \]
+\end{defi}
+
+\begin{defi}[Quan hệ đối xứng]
+  Một quan hệ $R$ là \emph{đối xứng} nếu và chỉ nếu
+  \[
+    (\forall a, b)\,aRb\Leftrightarrow bRa.
+  \]
+\end{defi}
+
+\begin{defi}[Quan hệ kết hợp]
+  Một quan hệ $R$ là \emph{kết hợp} nếu và chỉ nếu
+  \[
+    (\forall a, b, c)\,aRb\wedge bRc \Rightarrow aRc.
+  \]
+\end{defi}
+
+\begin{eg}
+ Liên quan đến các ví dụ trên,
+  \begin{center}
+    \begin{table}[H]
+        \centering
+        \label{tab:examples_relations}
+        \caption{Bảng phân loại quan hệ đối với Ví dụ (i) - (vi).}
+        \begin{tabular}{lcccccc}
+          \toprule
+          Ví dụ & (i) & (ii) & (iii) & (iv) & (v) & (vi) \\
+          \midrule
+          Quan hệ phản xứng & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark \\
+          Quan hệ đối xứng & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark \\
+          Quan hệ kết hợp & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
+          \bottomrule
+        \end{tabular}
+    \end{table}
+  \end{center}
+\end{eg}
+
+\begin{defi}[Quan hệ tương đương]
+  Một quan hệ được gọi là \emph{quan hệ tương đương} nếu nó có tính phản xạ, đối xứng và bắc cầu. Ví dụ\ (i) và (vi) trong các ví dụ trên là các quan hệ tương đương.
+\end{defi}
+Nếu đó là quan hệ tương đương, chúng ta thường viết $\sim$ thay vì $R$. Như tên cho thấy, quan hệ tương đương được sử dụng để mô tả các quan hệ tương tự như đẳng thức. Ví dụ, nếu chúng ta muốn biểu diễn các số hữu tỉ dưới dạng một cặp số nguyên, chúng ta có thể có một quan hệ tương đương được xác định bởi $(n, m)\sim (p, q)$ iff $nq = mp$, sao cho hai cặp là tương đương nếu chúng biểu diễn cùng một số hữu tỉ.
+
+\begin{eg}
+  Nếu chúng ta xem xét một bộ bài, hãy xác định hai lá bài có liên quan với nhau nếu chúng có cùng một bộ.
+\end{eg}
+
+Như đã đề cập, chúng ta quan tấm đến những thứ được liên hệ bởi $\sim$ như tương đương. Do đó, chúng ta muốn đồng nhất tát cả những thứ "tương đương" lại với nhau và hình thành một đối tượng mới.
+\begin{defi}[Lớp tương đương]
+  Nếu $\sim$ là một quan hệ tương đương, thì \emph{lớp tương đương} $[x]$ là tập hợp tất cả các phần tử có liên quan thông qua $\sim$ đến $x$.
+\end{defi}
+
+\begin{eg}
+  Trong ví dụ về lá bài, $[8\heartsuit]$ là tập hợp tất cả các lá cơ.
+\end{eg}
+
+\begin{defi}[Phân hoạch tập hợp]
+  Một \emph{phân hoạch} của một tập hợp $X$ là một tập hợp các tập con $A_\alpha$ của $X$ sao cho mỗi phần tử của $X$ nằm chính xác trong một trong $A_\alpha$.
+\end{defi}
+
+\begin{thm}
+  Nếu $\sim$ là một quan hệ tương đương trên $A$, thì các lớp tương đương của $\sim$ tạo thành một phân vùng của $A$.
+\end{thm}
+
+\begin{proof}
+  % By reflexivity, we have $a\in [a]$. Thus the equivalence classes cover the whole set. We must now show that for all $a, b\in A$, either $[a] = [b]$ or $[a]\cap [b]=\emptyset$.
+
+  % Suppose $[a]\cap[b]\not=\emptyset$. Then $\exists c\in [a]\cap[b]$. So $a\sim c, b\sim c$. By symmetry, $c\sim b$. By transitivity, we have $a\sim b$. For all $b'\in [b]$, we have $b\sim b'$. Thus by transitivity, we have $a\sim b'$. Thus $[b]\subseteq[a]$. By symmetry, $[a]\subseteq[b]$ and $[a] = [b]$.
+
+  Theo tính phản xạ, chúng ta có $a\in [a]$. Do đó, các lớp tương đương bao trùm toàn bộ tập hợp. Bây giờ chúng ta phải chứng minh rằng với mọi $a, b\in A$, $[a] = [b]$ hoặc $[a]\cap [b]=\emptyset$.
+
+ Giả sử $[a]\cap[b]\not=\emptyset$. Khi đó $\exists c\in [a]\cap[b]$. Vậy $a\sim c, b\sim c$. Theo tính đối xứng, $c\sim b$. Theo tính bắc cầu, chúng ta có $a\sim b$. Với mọi $b'\in [b]$, ta có $b\sim b'$. Do đó, theo tính bắc cầu, chúng ta có $a\sim b'$. Do đó $[b]\subseteq[a]$. Theo tính đối xứng, $[a]\subseteq[b]$ và $[a] = [b]$.
+\end{proof}
+
+
+Mặt khác, mỗi phân hoạch xác định một mối quan hệ tương đương trong đó hai phần tử có liên quan với nhau nếu chúng nằm trong cùng một phân hoạch. Do đó, các phân vùng và các quan hệ tương đương là "giống nhau".
+\begin{defi}[Ánh xạ thương]
+  \emph{Ánh xạ thương} $q$ ánh xạ từng phần tử trong $A$ tới lớp tương đương chứa $a$, tức là\ $a\mapsto [a]$. Ví dụ:\ $q(8\heartsuit) = \{\heartsuit\}$.
+\end{defi}
